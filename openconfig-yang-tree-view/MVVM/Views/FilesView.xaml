@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="openconfig_yang_tree_view.MVVM.Views.FilesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:openconfig_yang_tree_view.MVVM.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="300"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel  Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2">
+            <TextBox x:Name="txtFolderPath" TextWrapping="Wrap" Text="Select a folder to parse from..." FontSize="16" IsEnabled="False" Height="30" Width="500" Margin="0,0,10,0"/>
+            <Button x:Name="btnSelect" Content="Select" Height="30" Width="93" Margin="10,0,10,0" Click="btnSelect_Click"/>
+            <Button x:Name="btnParse" Content="Parse" Height="30" Width="93" Margin="10,0,0,0" IsEnabled="False"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Label FontSize="16" HorizontalAlignment="Center">Parsed files:</Label>
+            <TextBox x:Name="txtParsed" Height="216" Width="248" IsEnabled="False"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Label FontSize="16" HorizontalAlignment="Center">Missing files:</Label>
+            <TextBox x:Name="txtMissing" Height="212" Width="248" IsEnabled="False"></TextBox>
+        </StackPanel>
+    </Grid>
+</UserControl>
