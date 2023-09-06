@@ -18,15 +18,27 @@
         <StackPanel  Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2">
             <TextBox x:Name="txtFolderPath" TextWrapping="Wrap" Text="Select a folder to parse from..." FontSize="16" IsEnabled="False" Height="30" Width="500" Margin="0,0,10,0"/>
             <Button x:Name="btnSelect" Content="Select" Height="30" Width="93" Margin="10,0,10,0" Click="btnSelect_Click"/>
-            <Button x:Name="btnParse" Content="Parse" Height="30" Width="93" Margin="10,0,0,0" IsEnabled="False"/>
+            <Button x:Name="btnParse" Content="Parse" Height="30" Width="93" Margin="10,0,0,0" IsEnabled="False" Click="btnParse_Click"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="0">
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <Label FontSize="16" HorizontalAlignment="Center">Parsed files:</Label>
-            <TextBox x:Name="txtParsed" Height="216" Width="248" IsEnabled="False"></TextBox>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1">
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <TextBox x:Name="txtParsed" IsReadOnly="True" Height="230" Width="250"></TextBox>
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <Label FontSize="16" HorizontalAlignment="Center">Missing files:</Label>
-            <TextBox x:Name="txtMissing" Height="212" Width="248" IsEnabled="False"></TextBox>
-        </StackPanel>
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <TextBox x:Name="txtMissing" IsReadOnly="True" Height="229" Width="250"></TextBox>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </UserControl>
