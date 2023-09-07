@@ -11,7 +11,6 @@ namespace openconfig_yang_tree_view.InMemoryDB
     {
         public List<Module> Modules { get; set; }
 
-
         public InMemoryDB()
         {
             Modules = new List<Module>();

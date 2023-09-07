@@ -31,7 +31,7 @@ namespace openconfig_yang_tree_view.MVVM.Views
 
         private void btnParse_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var filesList = ParsingService.Parse(txtFolderPath.Text);
+            var filesList = ParsingService.ParseFromFolder(txtFolderPath.Text);
             StringBuilder sb = new StringBuilder();
             foreach (var file in filesList)
             {

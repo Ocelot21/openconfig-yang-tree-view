@@ -15,5 +15,11 @@ namespace openconfig_yang_tree_view.MVVM.Model
         public List<Leaf> Leafs { get; set; }
         public List<Use> Uses { get; set; }
         public List<Container> Containers { get; set; }
+        public Grouping()
+        {
+            Leafs = new List<Leaf>();
+            Uses = new List<Use>();
+            Containers = new List<Container>();
+        }
     }
 }

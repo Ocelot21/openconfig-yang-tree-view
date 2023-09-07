@@ -9,6 +9,6 @@ namespace openconfig_yang_tree_view.MVVM.Model
     public class Use
     {
         public string Description { get; set; }
-        public Grouping External { get; set; }
+        public string ExternalPrefix { get; set; }
     }
 }
