@@ -22,7 +22,7 @@ namespace openconfig_yang_tree_view.Services
             return string.Join(Environment.NewLine, lines);
         }
 
-        public static string GetTextFromNextQuotation(this string content, int index, out int lineIndex)
+        public static string GetTextFromNextQuotation(this string content, int index, ref int lineIndex)
         {
 
 

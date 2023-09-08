@@ -15,6 +15,7 @@ namespace openconfig_yang_tree_view.MVVM.Model
         public string Description { get; set; }
         //public string Organization { get; set; }
         //public string Contact { get; set; }
+        public List<string> Imports { get; set; }
         public List<Container> Containers { get; set; }
         public List<Grouping> Groupings { get; set; }
         public List<Leaf> Leafs { get; set; }
@@ -24,6 +25,7 @@ namespace openconfig_yang_tree_view.MVVM.Model
 
         public Module()
         {
+            Imports = new List<string>();
             Containers = new List<Container>();
             Groupings = new List<Grouping>();
             Leafs = new List<Leaf>();

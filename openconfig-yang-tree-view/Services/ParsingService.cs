@@ -41,6 +41,14 @@ namespace openconfig_yang_tree_view.Services
                 else
                     continue;
             }
+            foreach (Module module in YangRepository._dataBase.Modules)
+            {
+                foreach(string importFile in module.Imports)
+                {
+                    if (!ImportFileExist(importFile))
+                        _missingFiles.Add(importFile);
+                }
+            }
             return (_parsedFiles, _missingFiles.Distinct().ToList());
         }
 
@@ -76,25 +84,24 @@ namespace openconfig_yang_tree_view.Services
                 switch (contentLines[i])
                 {
                     case string line when line.StartsWith("yang-version"):
-                        module.YangVersion = content.GetTextFromNextQuotation(index, out lineIndex);
+                        module.YangVersion = content.GetTextFromNextQuotation(index, ref lineIndex);
                         i = lineIndex - 1;
                         break;
                     case string line when line.StartsWith("namespace"):
-                        module.Namespace = content.GetTextFromNextQuotation(index, out lineIndex);
+                        module.Namespace = content.GetTextFromNextQuotation(index, ref lineIndex);
                         i = lineIndex - 1;
                         break;
                     case string line when line.StartsWith("prefix"):
-                        module.Prefix = content.GetTextFromNextQuotation(index, out lineIndex);
+                        module.Prefix = content.GetTextFromNextQuotation(index, ref lineIndex);
                         i = lineIndex - 1;
                         break;
                     case string line when line.StartsWith("description"):
-                        module.Description = content.GetTextFromNextQuotation(index, out lineIndex);
+                        module.Description = content.GetTextFromNextQuotation(index, ref lineIndex);
                         i = lineIndex - 1;
                         break;
                     case string line when line.StartsWith("import"):
                         string fileName = contentLines[i].Split(" ")[1];
-                        if (!ImportFileExist(fileName))
-                            _missingFiles.Add(fileName);
+                        module.Imports.Add(fileName);
                         break;
                     default:
                         continue;
