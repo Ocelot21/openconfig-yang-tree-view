@@ -22,9 +22,12 @@ namespace openconfig_yang_tree_view.Services
             return string.Join(Environment.NewLine, lines);
         }
 
-        public static string GetTextFromNextQuotation(this string content, int index, ref int lineIndex)
+        public static string GetTextFromNextQuotation(this string content, int index, out int lineIndex)
         {
+
+
             int openingQuoteIndex = content.IndexOf("\"", index);
+
             if (openingQuoteIndex == -1)
             {
                 throw new Exception("Syntax error in .yang file! Quotation marks not found!");
@@ -36,16 +39,10 @@ namespace openconfig_yang_tree_view.Services
                 throw new Exception("Syntax error in .yang file! Quotation marks not found!");
             }
 
-            string textBeforeQuotes = content.Substring(index, openingQuoteIndex);
-            
+            string textBeforeQuotes = content.Substring(index, openingQuoteIndex-index);
+            string extractedText = content.Substring(openingQuoteIndex + 1, closingQuoteIndex - openingQuoteIndex - 1);
 
-            int length = closingQuoteIndex - openingQuoteIndex - 1;
-            if (length <= 0)
-                return string.Empty;
-            string extractedText = content.Substring(openingQuoteIndex + 1, length);
-
-            lineIndex += textBeforeQuotes.Split(new[] { "\n" }, StringSplitOptions.None).Length-1
-                + extractedText.Split(new[] { "\n" }, StringSplitOptions.None).Length;
+            lineIndex += textBeforeQuotes.Split(Environment.NewLine, StringSplitOptions.None).Length + extractedText.Split(Environment.NewLine, StringSplitOptions.None).Length - 1;
 
             return extractedText;
         }

@@ -31,13 +31,19 @@ namespace openconfig_yang_tree_view.MVVM.Views
 
         private void btnParse_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var filesList = ParsingService.ParseFromFolder(txtFolderPath.Text);
+            var (filesList, missingFiles) = ParsingService.ParseFromFolder(txtFolderPath.Text);
             StringBuilder sb = new StringBuilder();
+            StringBuilder sbMissing = new StringBuilder();
             foreach (var file in filesList)
             {
                 sb.AppendLine($"{file}");
             }
+            foreach (var file in missingFiles)
+            {
+                sbMissing.AppendLine($"{file}");
+            }
             txtParsed.Text = sb.ToString();
+            txtMissing.Text = sbMissing.ToString();
         }
     }
 }
