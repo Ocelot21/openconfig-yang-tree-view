@@ -47,7 +47,7 @@ namespace openconfig_yang_tree_view.Services
             return extractedText;
         }
 
-        public static string GetTextFromNextBrackets(this string content, int index)
+        public static string GetTextFromNextBrackets(this string content, int index, ref int lineIndex)
         {
             int openBraceIndex = content.IndexOf('{', index);
             if (openBraceIndex == -1)
@@ -67,7 +67,11 @@ namespace openconfig_yang_tree_view.Services
                 return string.Empty;
             }
 
-            return content.Substring(openBraceIndex + 1, length);
+            string contentInsideBrackets = content.Substring(openBraceIndex + 1, length);
+
+            lineIndex += contentInsideBrackets.Split(Environment.NewLine, StringSplitOptions.None).Length;
+
+            return contentInsideBrackets;
         }
 
         private static int FindMatchingClosingBrace(this string content, int openBraceIndex)

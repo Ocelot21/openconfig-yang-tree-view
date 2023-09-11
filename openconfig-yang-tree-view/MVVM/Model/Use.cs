@@ -8,7 +8,8 @@ namespace openconfig_yang_tree_view.MVVM.Model
 {
     public class Use
     {
-        public string Description { get; set; }
+        public string Name { get; set; }
+        public string InternalPrefix { get; set; }
         public string ExternalPrefix { get; set; }
     }
 }
