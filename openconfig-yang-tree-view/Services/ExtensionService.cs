@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace openconfig_yang_tree_view.Services
 {
@@ -14,11 +9,11 @@ namespace openconfig_yang_tree_view.Services
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            string[] lines = input.Split(new[] { "\n" }, StringSplitOptions.None);
+            string[] lines = input.Split(Environment.NewLine, StringSplitOptions.None);
             for (int i = 0; i < lines.Length; i++)
             {
                 lines[i] = lines[i].Trim();
-            }
+            }   
             return string.Join(Environment.NewLine, lines);
         }
 

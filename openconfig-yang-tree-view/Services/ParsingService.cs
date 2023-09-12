@@ -27,10 +27,10 @@ namespace openconfig_yang_tree_view.Services
                     {
                         string yangContent = File.ReadAllText(file);
                         string fileName = Path.GetFileNameWithoutExtension(file);
-                        Console.WriteLine($"Parsing {fileName}.yang");
+                        //Console.WriteLine($"Parsing {fileName}.yang");
                         yangContent = yangContent.TrimAllLines();
                         ParseFile(yangContent);
-                        Console.WriteLine($"End of {fileName}.yang\n");
+                        //Console.WriteLine($"End of {fileName}.yang\n");
                         _parsedFiles.Add(fileName);
                         Console.WriteLine(DataAccessService._dataBase.Modules.Count);
                     }
@@ -78,9 +78,12 @@ namespace openconfig_yang_tree_view.Services
         private static void ParseModule(string content, Module module)
         {
             string[] contentLines = content.Split(Environment.NewLine, StringSplitOptions.None);
+            module.YangVersion = "1"; //A module or submodule that doesn't contain the "yang-version" statement, or one that contains the value "1", is developed for YANG version 1, defined in [RFC6020].
 
             for (int i = 0; i < contentLines.Length; i++)
             {
+                if (contentLines[i] == string.Empty || contentLines[i].StartsWith(@"//"))
+                    continue;
                 int lineIndex = i;
                 int index = content.IndexOf(contentLines[i]);
                 switch (contentLines[i])
@@ -150,6 +153,14 @@ namespace openconfig_yang_tree_view.Services
                         ParseList(list, content.GetTextFromNextBrackets(index, ref lineIndex));
                         module.Lists.Add(list);
                         i = lineIndex;
+                        break;
+                    case string line when line.StartsWith("augment"):
+                        content.GetTextFromNextBrackets(index, ref lineIndex);
+                        i = lineIndex;
+                        break;
+                    case string line when line.StartsWith("uses"):
+                        string usedGrouping = contentLines[i].Split(" ")[1];
+                        module.Uses.Add(usedGrouping);
                         break;
                     default:
                         continue;
