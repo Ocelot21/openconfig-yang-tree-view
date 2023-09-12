@@ -42,6 +42,9 @@ namespace openconfig_yang_tree_view.Services
                 else
                     continue;
             }
+
+            var submodules = DataAccessService._dataBase.Modules.Where(m => m.IsSubmodule);
+
             foreach (Module module in DataAccessService._dataBase.Modules)
             {
                 foreach (string importFile in module.Imports)
@@ -62,13 +65,14 @@ namespace openconfig_yang_tree_view.Services
                 case string content when content.StartsWith("module"):
                     Module module = new Module();
                     module.Name = content.Split(' ')[1];
+                    module.IsSubmodule = false;
                     ParseModule(content.GetTextFromNextBrackets(0, ref lineIndex), module);
                     DataAccessService._dataBase.Modules.Add(module);
-
                     break;
                 case string content when content.StartsWith("submodule"):
-                    Submodule submodule = new Submodule();
+                    Module submodule = new Module();
                     submodule.Name = content.Split(' ')[1];
+                    submodule.IsSubmodule = true;
                     ParseModule(content.GetTextFromNextBrackets(0, ref lineIndex), submodule);
                     DataAccessService._dataBase.Modules.Add(submodule);
                     break;
@@ -77,20 +81,24 @@ namespace openconfig_yang_tree_view.Services
 
         private static void ParseModule(string content, Module module)
         {
-            string[] contentLines = content.Split(Environment.NewLine, StringSplitOptions.None);
+            string[] contentLines = content.Split(new[] { "\n" }, StringSplitOptions.None);
             module.YangVersion = "1"; //A module or submodule that doesn't contain the "yang-version" statement, or one that contains the value "1", is developed for YANG version 1, defined in [RFC6020].
 
             for (int i = 0; i < contentLines.Length; i++)
             {
-                if (contentLines[i] == string.Empty || contentLines[i].StartsWith(@"//"))
-                    continue;
+                //if (contentLines[i] == string.Empty || contentLines[i].StartsWith(@"//"))
+                 //   continue;
                 int lineIndex = i;
                 int index = content.IndexOf(contentLines[i]);
                 switch (contentLines[i])
                 {
                     case string line when line.StartsWith("belongs-to"):
-                        if (module is Submodule)
-                            (module as Submodule).ParentPrefix = contentLines[i].Split(' ')[1];
+                        string[] belongsTo = (content.GetTextFromNextBrackets(index, ref lineIndex)).Split(new[] { "\n" }, StringSplitOptions.None);
+                        foreach (var belongsToLine in belongsTo)
+                        {
+                            if (belongsToLine.StartsWith("prefix"))
+                                module.Prefix = belongsToLine.Split(" ")[1];
+                        }
                         break;
                     case string line when line.StartsWith("yang-version"):
                         module.YangVersion = content.GetTextFromNextQuotation(index, ref lineIndex);

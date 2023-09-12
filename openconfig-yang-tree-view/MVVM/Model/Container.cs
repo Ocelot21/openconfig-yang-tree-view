@@ -7,7 +7,7 @@ namespace openconfig_yang_tree_view.MVVM.Model
         public string Name { get; set; }
         public string Description { get; set; }
         public bool Config { get; set; }
-        public List<string> Uses { get; set; }
+        public List<Use> Uses { get; set; }
         public List<YangList> Lists { get; set; }
         public List<Leaf> Leafs { get; set; }
         public List<LeafList> LeafLists { get; set; }
@@ -15,7 +15,7 @@ namespace openconfig_yang_tree_view.MVVM.Model
 
         public Container()
         {
-            Uses = new List<string>();
+            Uses = new List<Use>();
             Lists = new List<YangList>();
             Leafs = new List<Leaf>();
             LeafLists = new List<LeafList>();

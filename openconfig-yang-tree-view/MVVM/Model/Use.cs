@@ -9,7 +9,7 @@ namespace openconfig_yang_tree_view.MVVM.Model
     public class Use
     {
         public string Name { get; set; }
-        public string InternalPrefix { get; set; }
-        public string ExternalPrefix { get; set; }
+        public bool IsExternal { get; set; }
+        public string? ExternalPrefix { get; set; }
     }
 }

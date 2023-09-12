@@ -9,7 +9,7 @@ namespace openconfig_yang_tree_view.Services
             if (input == null)
                 throw new ArgumentNullException(nameof(input));
 
-            string[] lines = input.Split(Environment.NewLine, StringSplitOptions.None);
+            string[] lines = input.Split(new[] { "\n" }, StringSplitOptions.None);
             for (int i = 0; i < lines.Length; i++)
             {
                 lines[i] = lines[i].Trim();
@@ -25,19 +25,19 @@ namespace openconfig_yang_tree_view.Services
 
             if (openingQuoteIndex == -1)
             {
-                throw new Exception("Syntax error in .yang file! Quotation marks not found!");
+                throw new Exception("Syntax error in .yang file! Opening qoutation mark after statement not found!");
             }
 
             int closingQuoteIndex = content.IndexOf("\"", openingQuoteIndex + 1);
             if (closingQuoteIndex == -1)
             {
-                throw new Exception("Syntax error in .yang file! Quotation marks not found!");
+                throw new Exception("Syntax error in .yang file! Closing quotation mark not found!");
             }
 
             string textBeforeQuotes = content.Substring(index, openingQuoteIndex-index);
             string extractedText = content.Substring(openingQuoteIndex + 1, closingQuoteIndex - openingQuoteIndex - 1);
 
-            lineIndex += textBeforeQuotes.Split(Environment.NewLine, StringSplitOptions.None).Length + extractedText.Split(Environment.NewLine, StringSplitOptions.None).Length - 1;
+            lineIndex += textBeforeQuotes.Split(new[] { "\n" }, StringSplitOptions.None).Length + extractedText.Split(new[] { "\n" }, StringSplitOptions.None).Length - 1;
 
             return extractedText;
         }
@@ -64,7 +64,7 @@ namespace openconfig_yang_tree_view.Services
 
             string contentInsideBrackets = content.Substring(openBraceIndex + 1, length);
 
-            lineIndex += contentInsideBrackets.Split(Environment.NewLine, StringSplitOptions.None).Length;
+            lineIndex += contentInsideBrackets.Split(new[] { "\n" }, StringSplitOptions.None).Length;
 
             return contentInsideBrackets;
         }
