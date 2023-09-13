@@ -1,4 +1,6 @@
-﻿using System;
+﻿using openconfig_yang_tree_view.DataAccess;
+using openconfig_yang_tree_view.MVVM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,30 @@ namespace openconfig_yang_tree_view.MVVM.Views
     /// </summary>
     public partial class TreeViewView : UserControl
     {
+        private InMemoryDb _database = DataAccessService.YangDatabase;
         public TreeViewView()
         {
             InitializeComponent();
+            CreateTreeView();
+        }
+
+        public void CreateTreeView()
+        {
+            TreeView treeView = new TreeView();
+            foreach (var module in _database.Modules) 
+            {
+                var treeViewItem = new TreeViewItem();
+                Grouping root = null;
+                if (module.Uses.Count>0)
+                    root = module.Groupings.FirstOrDefault(g => g.Name == module.Uses.FirstOrDefault().Name);
+                if (root != null)
+                {
+                    treeViewItem.Header = root.Name;
+                    treeView.Items.Add(treeViewItem);
+                }
+                
+            }      
+            YangTreeView.Children.Add(treeView);
         }
     }
 }

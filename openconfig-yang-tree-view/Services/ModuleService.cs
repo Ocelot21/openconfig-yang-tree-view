@@ -1,4 +1,5 @@
-﻿using openconfig_yang_tree_view.InMemoryDB;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using openconfig_yang_tree_view.DataAccess;
 using openconfig_yang_tree_view.MVVM.Model;
 using System;
 using System.Collections.Generic;
@@ -10,27 +11,22 @@ namespace openconfig_yang_tree_view.Services
 {
     public class ModuleService
     {
-        //public void MergeModulesWithSubmodules()
-        //{
-        //    List<Module> submodules = new List<Module>();
-        //    foreach(var module in DataAccessService._dataBase.Modules) 
-        //    {
-        //        if (module is Submodule)
-        //        {
-        //            var parentModule = DataAccessService._dataBase.Modules.SingleOrDefault(m => m.Name == (module as Submodule).ParentPrefix);
-        //            if (parentModule != null)
-        //            {
-        //                parentModule.Groupings.AddRange(module.Groupings);
-        //                submodules.Add(module);
-        //            }
-                    
-        //        }
-        //    }
-        //    foreach (var submodule in submodules)
-        //    {
-        //        DataAccessService._dataBase.Modules.Remove(submodule);
-        //    }
-        //}
+        private InMemoryDb _dataBase = DataAccessService.YangDatabase;
+        public void MergeModulesWithSubmodules()
+        {
+            foreach (var submodule in _dataBase.Modules.Where(m => m.IsSubmodule))
+            {
+                Module parentModule = _dataBase.Modules.SingleOrDefault(m => m.Prefix == submodule.Prefix && !m.IsSubmodule);
+                if (parentModule != null)
+                    parentModule.Groupings.AddRange(submodule.Groupings);
+            }
+            _dataBase.Modules.RemoveAll(m => m.IsSubmodule);
+            Console.WriteLine(_dataBase.Modules.ToString());
+        }
 
+        public void ImplementUses()
+        {
+
+        }
     }
 }

@@ -2,6 +2,5 @@
 {
     public class LeafList : Leaf
     {
-        public string Key { get; set; }
     }
 }

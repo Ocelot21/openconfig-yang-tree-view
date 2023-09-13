@@ -5,5 +5,6 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public bool Config { get; set; }
+        public string Type { get; set; }
     }
 }

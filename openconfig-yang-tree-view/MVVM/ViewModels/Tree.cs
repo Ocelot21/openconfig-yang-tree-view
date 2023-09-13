@@ -9,11 +9,11 @@ namespace openconfig_yang_tree_view.MVVM.ViewModels
 {
     public class Tree
     {
-        public List<Grouping> Groupings { get; set; }
+        public List<Grouping> Roots { get; set; }
 
         public Tree()
         {
-            Groupings = new List<Grouping>();
+            Roots = new List<Grouping>();
         }
     }
 }

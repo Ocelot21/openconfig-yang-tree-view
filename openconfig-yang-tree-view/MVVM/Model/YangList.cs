@@ -12,7 +12,7 @@ namespace openconfig_yang_tree_view.MVVM.Model
         public List<Leaf> Leafs { get; set; }
         public List<LeafList> LeafLists { get; set; }
         public List<YangList> Lists { get; set; }
-        public List<string> Uses { get; set; }
+        public List<Use> Uses { get; set; }
 
         public YangList()
         {
@@ -21,7 +21,7 @@ namespace openconfig_yang_tree_view.MVVM.Model
             Leafs = new List<Leaf>();
             LeafLists = new List<LeafList>();
             Lists = new List<YangList>();
-            Uses = new List<string>();
+            Uses = new List<Use>();
         }
     }
 }
