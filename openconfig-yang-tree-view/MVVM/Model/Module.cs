@@ -14,22 +14,29 @@ namespace openconfig_yang_tree_view.MVVM.Model
         //public string Contact { get; set; }
         public bool IsSubmodule { get; set; }
         public List<string> Imports { get; set; }
+        public List<string> Includes { get; set; }
         public List<Container> Containers { get; set; }
         public List<Grouping> Groupings { get; set; }
+        public Grouping Root { get; set; }
         public List<Leaf> Leafs { get; set; }
         public List<LeafList> LeafLists { get; set; }
         public List<YangList> Lists { get; set; }
+        public List<Use> RootUses { get; set; }
         public List<Use> Uses { get; set; }
+        public  List<Augment> Augments { get; set; }
 
         public Module()
         {
             Imports = new List<string>();
+            Includes = new List<string>();
             Containers = new List<Container>();
             Groupings = new List<Grouping>();
             Leafs = new List<Leaf>();
             LeafLists = new List<LeafList>();
             Lists = new List<YangList>();
+            RootUses = new List<Use>();
             Uses = new List<Use>();
+            Augments = new List<Augment>();
         }
     }
 }

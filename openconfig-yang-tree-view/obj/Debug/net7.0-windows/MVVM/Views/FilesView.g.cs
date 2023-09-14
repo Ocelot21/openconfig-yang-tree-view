@@ -94,7 +94,7 @@ namespace openconfig_yang_tree_view.MVVM.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/openconfig-yang-tree-view;V1.0.0.0;component/mvvm/views/filesview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/openconfig-yang-tree-view;component/mvvm/views/filesview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\MVVM\Views\FilesView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

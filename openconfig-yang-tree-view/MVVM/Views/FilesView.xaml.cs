@@ -10,6 +10,7 @@ namespace openconfig_yang_tree_view.MVVM.Views
     /// </summary>
     public partial class FilesView : UserControl
     {
+        private ParsingServiceAlternate _parsingService = new ParsingServiceAlternate();
         public FilesView()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace openconfig_yang_tree_view.MVVM.Views
 
         private void btnParse_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var (filesList, missingFiles) = ParsingService.ParseFromFolder(txtFolderPath.Text);
+            var (filesList, missingFiles) = _parsingService.ParseFromFolder(txtFolderPath.Text);
             StringBuilder sb = new StringBuilder();
             StringBuilder sbMissing = new StringBuilder();
             foreach (var file in filesList)

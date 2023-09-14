@@ -4,6 +4,7 @@ namespace openconfig_yang_tree_view.MVVM.Model
 {
     public class Augment
     {
+        public string Name { get; set; }
         public List<string> Path { get; set; }
         public string Description { get; set; }
         public List<Container> Containers { get; set; }

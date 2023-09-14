@@ -26,6 +26,97 @@ namespace openconfig_yang_tree_view.Services
             return string.Join("\n", lines);
         }
 
+        public static IEnumerable<string> TrimAllLines(this IEnumerable<string> input) 
+        {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
+            
+            var inputAsList = input.ToList();
+
+            for (int i = 0; i < inputAsList.Count; i++)
+            {
+                inputAsList[i] = inputAsList[i].Trim();
+            }
+            return inputAsList.AsEnumerable();
+        }
+
+        public static IEnumerable<string> GetObjectContent(this IEnumerable<string> lines, int lineIndex, out int index)
+        {
+            List<string> objectLines = new List<string>();
+            var linesList = lines.ToList();
+            objectLines.Add(linesList[lineIndex]);
+            bool withinOutermostBrackets = false;
+            int openBrackets = 0;
+            if (linesList[lineIndex].Contains("{"))
+            {
+                withinOutermostBrackets = true;
+                openBrackets++;
+            }
+
+            if (linesList[lineIndex].Contains("}"))
+            {
+                openBrackets--;
+            }
+
+            while (openBrackets != 0 || !withinOutermostBrackets)
+            {
+                lineIndex++;
+                string nextLine = linesList[lineIndex].Trim();
+                objectLines.Add(nextLine);
+                switch (nextLine)
+                {
+                    case string t when t.Contains("{"):
+                        withinOutermostBrackets = true;
+                        openBrackets += t.Count(x => x == '{');
+                        break;
+
+                    case string t when t.Contains("}"):
+                        withinOutermostBrackets = true;
+                        openBrackets -= t.Count(x => x == '}');
+                        break;
+                }
+            }
+
+            index = lineIndex;
+            return objectLines;
+        }
+
+        public static string GetMultilineText(this List<string> lines, int i, out int index)
+        {
+            string line = lines[i].Trim();
+            int indexOfFirst = line.IndexOf("\"") + 1;
+            while (indexOfFirst == 0)
+            {
+                i++;
+                line = lines[i].Trim();
+                indexOfFirst = line.IndexOf("\"") + 1;
+            }
+
+            int indexOfLast = line.IndexOf("\"", indexOfFirst);
+            List<string> descriptionPreviousLine = new List<string>();
+            while (indexOfLast == -1)
+            {
+                descriptionPreviousLine.Add(line.Replace("\"", string.Empty));
+                i++;
+                line = lines[i].Trim();
+                indexOfLast = line.IndexOf("\"");
+            }
+
+            if (descriptionPreviousLine.Count > 0)
+            {
+                descriptionPreviousLine.Add(line.Substring(0, indexOfLast));
+                index = i;
+                return string.Join(" ", descriptionPreviousLine);
+            }
+            else
+            {
+                index = i;
+                return line.Substring(indexOfFirst, indexOfLast - indexOfFirst).Trim();
+            }
+        }
+
         public static string GetTextFromNextQuotation(this string content, int index, ref int lineIndex)
         {
 
@@ -77,53 +168,6 @@ namespace openconfig_yang_tree_view.Services
 
             return contentInsideBrackets;
         }
-
-        public static string GetTextFromNextBrackets(string[] textLines, ref int lineIndex)
-        {
-            StringBuilder result = new StringBuilder();
-            int bracketCount = 0;
-            bool insideBrackets = false;
-
-            while (lineIndex < textLines.Length)
-            {
-                string line = textLines[lineIndex];
-                lineIndex++;
-
-                for (int i = 0; i < line.Length; i++)
-                {
-                    char c = line[i];
-
-                    if (c == '{')
-                    {
-                        bracketCount++;
-                        if (bracketCount == 1)
-                        {
-                            insideBrackets = true;
-                        }
-                    }
-                    else if (c == '}')
-                    {
-                        bracketCount--;
-                        if (bracketCount == 0 && insideBrackets)
-                        {
-                            return result.ToString();
-                        }
-                    }
-
-                    if (insideBrackets)
-                    {
-                        result.Append(c);
-                    }
-                }
-
-                if (insideBrackets)
-                {
-                    result.AppendLine();
-                }
-            }
-            return result.ToString();
-        }
-
 
     private static int FindMatchingClosingBrace(this string content, int openBraceIndex)
         {
