@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
+﻿using Mapster;
+using Microsoft.VisualBasic.ApplicationServices;
 using openconfig_yang_tree_view.DataAccess;
 using openconfig_yang_tree_view.MVVM.Model;
 using openconfig_yang_tree_view.MVVM.ViewModels;
@@ -14,47 +15,70 @@ namespace openconfig_yang_tree_view.Services
     {
         private InMemoryDb _dataBase = DataAccessService.YangDatabase;
         private ModuleService _moduleService;
-        public Tree Tree { get; set; }
 
         public TreeViewService() 
         {
-            Tree = new Tree();
             _moduleService = new ModuleService();
         }
 
-        public void FillTree()
+        public void FillTree(TreeViewModel treeViewModel)
         {
-
-            foreach (var module in _dataBase.Modules.Where(m => m.Root != null))
+            foreach (var module in _dataBase.Modules.Where(m => m.RootUse != null))
             {
-                foreach (var container in module.Root.Containers)
-                {
-                    ImplementUsesToContainer(container);
-                }
+                Grouping root = module.Groupings.FirstOrDefault(g => g.Name == module.RootUse.Name);
 
-                Tree.Roots.Add(module.Root);
-            }
-            
-            if (Tree.Roots.Count == 0)
-            {
-                foreach(var module in _dataBase.Modules)
+                if (root != null)
                 {
-                    module.AddUsesFromAllNodes();
-                    foreach(var grouping in module.Groupings)
+                    foreach (var container in root.Containers)
                     {
-                        if (!module.Uses.Any(m => m.Name == grouping.Name))
-                        {
-                            foreach (var container in grouping.Containers)
-                            {
-                                ImplementUsesToContainer(container);
-                            }
-
-                            Tree.Roots.Add(grouping);
-                        }
+                        ImplementUsesToContainer(container);
                     }
+
+                    var groupingViewModel = root.Adapt<GroupingViewModel>();
+
+                    treeViewModel.Roots.Add(groupingViewModel);
                 }
             }
         }
+
+        private GroupingViewModel CreateGroupingViewModel(Grouping root)
+        {
+            return null;
+        }
+
+        //public void FillTree(Tree tree)
+        //{
+
+        //    foreach (var module in _dataBase.Modules.Where(m => m.Root != null))
+        //    {
+        //        foreach (var container in module.Root.Containers)
+        //        {
+        //            ImplementUsesToContainer(container);
+        //        }
+
+        //        tree.Roots.Add(module.Root);
+        //    }
+
+        //    if (tree.Roots.Count == 0)
+        //    {
+        //        foreach (var module in _dataBase.Modules)
+        //        {
+        //            module.AddUsesFromAllNodes();
+        //            foreach (var grouping in module.Groupings)
+        //            {
+        //                if (!module.Uses.Any(u => u.Name == grouping.Name))
+        //                {
+        //                    foreach (var container in grouping.Containers)
+        //                    {
+        //                        ImplementExternalUsesToContainer(container);
+        //                    }
+
+        //                    tree.Roots.Add(grouping);
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
         private void ImplementUsesToContainer(Container container)
         {
@@ -75,14 +99,13 @@ namespace openconfig_yang_tree_view.Services
 
         private void ImplementUse(Container container, Use use)
         {
-            var module = _dataBase.Modules.FirstOrDefault(m => m.Prefix == use.ExternalPrefix);
-            
+            Module module = _dataBase.Modules.FirstOrDefault(m => m.Prefix == use.Prefix);
             if (module == null)
             {
                 return;
             }
 
-            var grouping = module.Groupings.FirstOrDefault(m => m.Name == use.Name);
+            Grouping grouping = module.Groupings.FirstOrDefault(m => m.Name == use.Name);
             if (grouping == null)
             {
                 return;
@@ -107,5 +130,7 @@ namespace openconfig_yang_tree_view.Services
                 ImplementUse(container, subUses);
             }
         }
+
+        //private void ImplementInternalUses()
     }
 }

@@ -15,7 +15,7 @@ using static System.Windows.Forms.LinkLabel;
 
 namespace openconfig_yang_tree_view.Services
 {
-    public class ParsingServiceAlternate
+    public class ParsingService
     {
         private string _folderPath = string.Empty;
         private List<string> _files = new List<string>();
@@ -144,11 +144,14 @@ namespace openconfig_yang_tree_view.Services
                         use.Name = line.Split(' ')[1].Replace(";", string.Empty);
                         if (use.Name.Contains(":"))
                         {
-                            use.IsExternal = true;
-                            use.ExternalPrefix = use.Name.Split(':')[0];
+                            use.Prefix = use.Name.Split(':')[0];
                             use.Name = use.Name.Split(':')[1];
                         }
-                        module.RootUses.Add(use);
+                        else
+                        {
+                            use.Prefix = module.Prefix;
+                        }
+                        module.RootUse = use;
                         break;
                     case string line when line.StartsWith("identity"):
                         moduleLines.GetObjectContent(i, out int identityIndex);
@@ -178,7 +181,7 @@ namespace openconfig_yang_tree_view.Services
                         Container container = new Container();
                         container.Name = line.Split(' ')[1];
                         List<string> containerLines = moduleLines.GetObjectContent(i, out int containerIndex).ToList();
-                        ParseContainer(containerLines, container);
+                        ParseContainer(containerLines, container, module.Prefix);
                         if (!module.Containers.Contains(container))
                         {
                             module.Containers.Add(container);
@@ -195,22 +198,22 @@ namespace openconfig_yang_tree_view.Services
                         Augment augment = new Augment();
                         augment.Name = line.Split(' ')[1];
                         List<string> augmentLines = moduleLines.GetObjectContent(i, out int augmentIndex).ToList();
-                        ParseAugment(augmentLines, augment);
+                        ParseAugment(augmentLines, augment, module.Prefix);
                         module.Augments.Add(augment);
                         i = augmentIndex;
                         break;
                 }
             }
 
-            module.Groupings = GetAllGroupings(groupingsLines);
+            module.Groupings = GetAllGroupings(groupingsLines, module.Prefix);
 
-            if (module.RootUses.Count > 0)
+            if (module.RootUse != null)
             {
-                module.Root = module.Groupings.FirstOrDefault(x => x.Name == module.RootUses[0].Name);
+                module.Root = module.Groupings.FirstOrDefault(x => x.Name == module.RootUse.Name);
             }
         }
 
-        private List<Grouping> GetAllGroupings(List<List<string>> groupingsLines)
+        private List<Grouping> GetAllGroupings(List<List<string>> groupingsLines, string modulePrefix)
         {
             List<Grouping> groupings = new List<Grouping>();
 
@@ -230,7 +233,7 @@ namespace openconfig_yang_tree_view.Services
                             Container container = new Container();
                             container.Name = line.Split(' ')[1];
                             List<string> containerLines = groupingLines.GetObjectContent(i, out int containerIndex).ToList();
-                            ParseContainer(containerLines, container);
+                            ParseContainer(containerLines, container, modulePrefix);
                             grouping.Containers.Add(container);
                             i = containerIndex;
                             break;
@@ -238,7 +241,7 @@ namespace openconfig_yang_tree_view.Services
                             YangList list = new YangList();
                             list.Name = line.Split(' ')[1];
                             List<string> listLines = groupingLines.GetObjectContent(i, out int listIndex).ToList();
-                            ParseList(listLines, list);
+                            ParseList(listLines, list, modulePrefix);
                             grouping.Lists.Add(list);
                             i = listIndex;
                             break;
@@ -263,9 +266,12 @@ namespace openconfig_yang_tree_view.Services
                             use.Name = line.Split(' ')[1].Replace(";", string.Empty);
                             if (use.Name.Contains(":"))
                             {
-                                use.IsExternal = true;
-                                use.ExternalPrefix = use.Name.Split(':')[0];
+                                use.Prefix = use.Name.Split(':')[0];
                                 use.Name = use.Name.Split(':')[1];
+                            }
+                            else
+                            {
+                                use.Prefix = modulePrefix;
                             }
                             grouping.Uses.Add(use);
                             break;
@@ -276,7 +282,7 @@ namespace openconfig_yang_tree_view.Services
             return groupings;
         }
 
-        private void ParseList(List<string> listLines, YangList list)
+        private void ParseList(List<string> listLines, YangList list, string modulePrefix)
         {
             for (int i = 0; i < listLines.Count; i++)
             {
@@ -310,7 +316,7 @@ namespace openconfig_yang_tree_view.Services
                     case string line when line.StartsWith("container"):
                         Container container = new Container();
                         List<string> containerLines = listLines.GetObjectContent(i, out int containerIndex).ToList();
-                        ParseContainer(containerLines, container);
+                        ParseContainer(containerLines, container, modulePrefix);
                         list.Containers.Add(container);
                         i = containerIndex;
                         break;
@@ -319,17 +325,28 @@ namespace openconfig_yang_tree_view.Services
                         use.Name = line.Split(' ')[1].Replace(";", string.Empty);
                         if (use.Name.Contains(":"))
                         {
-                            use.IsExternal = true;
-                            use.ExternalPrefix = use.Name.Split(':')[0];
+                            use.Prefix = use.Name.Split(':')[0];
                             use.Name = use.Name.Split(':')[1];
                         }
+                        else
+                        {
+                            use.Prefix = modulePrefix;
+                        }
                         list.Uses.Add(use);
+                        break;
+                    case string line when line.StartsWith("list") && i != 0:
+                        YangList sublist = new YangList();
+                        sublist.Name = line.Split(' ')[1];
+                        List<string> sublistLines = listLines.GetObjectContent(i, out int listIndex).ToList();
+                        ParseList(sublistLines, sublist, modulePrefix);
+                        list.Lists.Add(sublist);
+                        i = listIndex;
                         break;
                 }
             }
         }
 
-        private void ParseAugment(List<string> augmentLines, Augment augment)
+        private void ParseAugment(List<string> augmentLines, Augment augment, string modulePrefix)
         {
             for (int i = 0;  i < augmentLines.Count; i++)
             {
@@ -344,9 +361,12 @@ namespace openconfig_yang_tree_view.Services
                         use.Name = line.Split(' ')[1].Replace(";", string.Empty);
                         if (use.Name.Contains(":"))
                         {
-                            use.IsExternal = true;
-                            use.ExternalPrefix = use.Name.Split(':')[0];
+                            use.Prefix = use.Name.Split(':')[0];
                             use.Name = use.Name.Split(':')[1];
+                        }
+                        else
+                        {
+                            use.Prefix = modulePrefix;
                         }
                         augment.Uses.Add(use);
                         break;
@@ -371,8 +391,9 @@ namespace openconfig_yang_tree_view.Services
             }
         }
 
-        private void ParseContainer(List<string> containerLines, Container container)
+        private void ParseContainer(List<string> containerLines, Container container, string modulePrefix)
         {
+            container.Config = true; // default
             for (int i = 0; i < containerLines.Count; i++)
             {
                 switch (containerLines[i])
@@ -386,9 +407,12 @@ namespace openconfig_yang_tree_view.Services
                         use.Name = line.Split(' ')[1].Replace(";", string.Empty);
                         if (use.Name.Contains(":"))
                         {
-                            use.IsExternal = true;
-                            use.ExternalPrefix = use.Name.Split(':')[0];
+                            use.Prefix = use.Name.Split(':')[0];
                             use.Name = use.Name.Split(':')[1];
+                        }
+                        else
+                        {
+                            use.Prefix = modulePrefix;
                         }
                         container.Uses.Add(use);
                         break;
@@ -412,12 +436,20 @@ namespace openconfig_yang_tree_view.Services
                         Container subcontainer = new Container();
                         subcontainer.Name = line.Split(' ')[1];
                         var subcontainerLines = containerLines.GetObjectContent(i, out int subcontainerIndex).ToList();
-                        ParseContainer(subcontainerLines, container);
+                        ParseContainer(subcontainerLines, container, modulePrefix);
                         if (!container.Containers.Contains(subcontainer))
                         {
                             container.Containers.Add(subcontainer);
                         }
                         i = subcontainerIndex;
+                        break;
+                    case string line when line.StartsWith("list"):
+                        YangList list = new YangList();
+                        list.Name = line.Split(' ')[1];
+                        List<string> listLines = containerLines.GetObjectContent(i, out int listIndex).ToList();
+                        ParseList(listLines, list, modulePrefix);
+                        container.Lists.Add(list);
+                        i = listIndex;
                         break;
                 }
             }

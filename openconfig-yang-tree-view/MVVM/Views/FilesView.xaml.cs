@@ -10,7 +10,7 @@ namespace openconfig_yang_tree_view.MVVM.Views
     /// </summary>
     public partial class FilesView : UserControl
     {
-        private ParsingServiceAlternate _parsingService = new ParsingServiceAlternate();
+        private ParsingService _parsingService = new ParsingService();
         public FilesView()
         {
             InitializeComponent();

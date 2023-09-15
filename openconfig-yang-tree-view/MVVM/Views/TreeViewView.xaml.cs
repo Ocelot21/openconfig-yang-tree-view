@@ -1,5 +1,6 @@
 ﻿using openconfig_yang_tree_view.DataAccess;
 using openconfig_yang_tree_view.MVVM.Model;
+using openconfig_yang_tree_view.MVVM.ViewModels;
 using openconfig_yang_tree_view.Services;
 using System;
 using System.Collections.Generic;
@@ -25,9 +26,11 @@ namespace openconfig_yang_tree_view.MVVM.Views
     {
         private InMemoryDb _database = DataAccessService.YangDatabase;
         private TreeViewService _treeViewService;
+        private TreeViewModel _tree;
         public TreeViewView()
         {
             InitializeComponent();
+            _tree = new TreeViewModel();
             _treeViewService = new TreeViewService();
             CreateTreeView();
         }
@@ -36,16 +39,15 @@ namespace openconfig_yang_tree_view.MVVM.Views
         {
             TreeView treeView = new TreeView();
 
-            _treeViewService.FillTree();
+            _treeViewService.FillTree(_tree);
 
-            Console.WriteLine(_treeViewService.Tree);
 
             foreach (var module in _database.Modules) 
             {
                 var treeViewItem = new TreeViewItem();
                 Grouping root = null;
-                if (module.RootUses.Count>0)
-                    root = module.Groupings.FirstOrDefault(g => g.Name == module.RootUses.FirstOrDefault().Name);
+                if (module.RootUse != null)
+                    root = module.Groupings.FirstOrDefault(g => g.Name == module.RootUse.Name);
                 if (root != null)
                 {
                     treeViewItem.Header = root.Name;
