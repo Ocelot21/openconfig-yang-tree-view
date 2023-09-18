@@ -98,3 +98,5 @@ C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-t
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\ModulePropertyGridControl.baml
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\ListPropertyGridControl.g.cs
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\ListPropertyGridControl.baml
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\AltWindow.g.cs
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\AltWindow.baml
