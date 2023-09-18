@@ -13,7 +13,7 @@
     <Compile Update="MVVM\Views\SettingsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MVVM\Views\TreeViewView.xaml.cs">
+    <Compile Update="MVVM\Views\YangTreeView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -27,7 +27,7 @@
     <Page Update="MVVM\Views\SettingsView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MVVM\Views\TreeViewView.xaml">
+    <Page Update="MVVM\Views\YangTreeView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -7,7 +7,6 @@ namespace openconfig_yang_tree_view.DataAccess
     public class InMemoryDb
     {
         public List<Module> Modules { get; set; }
-        public Tree Tree { get; set; }
 
         public InMemoryDb()
         {

@@ -24,7 +24,7 @@ namespace openconfig_yang_tree_view
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            contentControl.Content = new TreeViewView();
+            contentControl.Content = new YangTreeView();
         }
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)

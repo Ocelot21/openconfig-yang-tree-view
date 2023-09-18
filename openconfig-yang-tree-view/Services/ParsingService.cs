@@ -315,6 +315,7 @@ namespace openconfig_yang_tree_view.Services
                         break;
                     case string line when line.StartsWith("container"):
                         Container container = new Container();
+                        container.Name = line.Split(" ")[1];
                         List<string> containerLines = listLines.GetObjectContent(i, out int containerIndex).ToList();
                         ParseContainer(containerLines, container, modulePrefix);
                         list.Containers.Add(container);
@@ -436,7 +437,7 @@ namespace openconfig_yang_tree_view.Services
                         Container subcontainer = new Container();
                         subcontainer.Name = line.Split(' ')[1];
                         var subcontainerLines = containerLines.GetObjectContent(i, out int subcontainerIndex).ToList();
-                        ParseContainer(subcontainerLines, container, modulePrefix);
+                        ParseContainer(subcontainerLines, subcontainer, modulePrefix);
                         if (!container.Containers.Contains(subcontainer))
                         {
                             container.Containers.Add(subcontainer);

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Afan\Source\Repos\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\
+C:\Users\Afan\source\repos\Ocelot21\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\
 openconfig_yang_tree_view
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-C:\Users\Afan\Source\Repos\openconfig-yang-tree-view\openconfig-yang-tree-view\App.xaml
-430262710
+C:\Users\Afan\source\repos\Ocelot21\openconfig-yang-tree-view\openconfig-yang-tree-view\App.xaml
+4-1466795655
 
-29-1708322666
+29-1664030383
 209-48549274
-MainWindow.xaml;MVVM\Views\FilesView.xaml;MVVM\Views\SettingsView.xaml;MVVM\Views\TreeViewView.xaml;
+MainWindow.xaml;MVVM\Views\FilesView.xaml;MVVM\Views\SettingsView.xaml;MVVM\Views\YangTreeView.xaml;
 
 False
 
