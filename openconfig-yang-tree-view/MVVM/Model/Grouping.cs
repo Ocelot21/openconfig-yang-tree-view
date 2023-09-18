@@ -4,6 +4,7 @@ namespace openconfig_yang_tree_view.MVVM.Model
 {
     public class Grouping
     {
+        public string Prefix { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public List<Leaf> Leafs { get; set; }

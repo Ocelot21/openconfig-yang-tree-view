@@ -13,7 +13,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TreeView Grid.Column="0" ItemsSource="{Binding Roots}" Name="treeView">
+        <TreeView Grid.Column="0" ItemsSource="{Binding Roots}" Name="treeView" SelectedItemChanged="treeView_SelectedItemChanged">
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type viewmodels:TreeNodeViewModel}" ItemsSource="{Binding Children}">
                     <TextBlock Text="{Binding Name}" />
@@ -21,8 +21,6 @@
             </TreeView.Resources>
         </TreeView>
 
-        <StackPanel Grid.Column="1" Margin="10">
-            <TextBlock Text="{Binding ElementName=treeView, Path=SelectedItem.Description}" FontWeight="Bold" />
-        </StackPanel>
+        <StackPanel x:Name="propertyGridPlaceholder" Grid.Column="1"/>
     </Grid>
 </UserControl>

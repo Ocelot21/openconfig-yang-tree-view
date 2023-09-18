@@ -69,6 +69,7 @@ namespace openconfig_yang_tree_view.Services
             }
 
 
+
             return (_parsedFiles, _missingFiles.Distinct().ToList());
         }
 
@@ -221,6 +222,7 @@ namespace openconfig_yang_tree_view.Services
             {
                 Grouping grouping = new Grouping();
                 grouping.Name = groupingLines[0].Split(' ')[1];
+                grouping.Prefix = modulePrefix;
                 for (int i = 0; i < groupingLines.Count; i++)
                 {
                     switch (groupingLines[i])

@@ -16,17 +16,12 @@ namespace openconfig_yang_tree_view.Services
         {
             foreach (var submodule in _dataBase.Modules.Where(m => m.IsSubmodule))
             {
-                Module parentModule = _dataBase.Modules.SingleOrDefault(m => m.Prefix == submodule.Prefix && !m.IsSubmodule);
+                Module parentModule = _dataBase.Modules.FirstOrDefault(m => m.Prefix == submodule.Prefix && !m.IsSubmodule);
                 if (parentModule != null)
                     parentModule.Groupings.AddRange(submodule.Groupings);
             }
             _dataBase.Modules.RemoveAll(m => m.IsSubmodule);
             Console.WriteLine(_dataBase.Modules.ToString());
-        }
-
-        public void ImplementUses()
-        {
-
         }
     }
 }

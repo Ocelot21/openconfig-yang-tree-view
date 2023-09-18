@@ -1,4 +1,5 @@
 ﻿using openconfig_yang_tree_view.DataAccess;
+using openconfig_yang_tree_view.MVVM.Model;
 using openconfig_yang_tree_view.MVVM.ViewModels;
 using openconfig_yang_tree_view.Services;
 using System;
@@ -30,6 +31,49 @@ namespace openconfig_yang_tree_view.MVVM.Views
             InitializeComponent();
             _treeViewService.FillTree(_tree);
             DataContext = _tree;
+        }
+
+        private void treeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            var selectedObject = treeView.SelectedItem;
+
+            if (selectedObject is LeafViewModel)
+            {
+                propertyGridPlaceholder.Children.Clear();
+                propertyGridPlaceholder.Children.Add(new LeafPropertyGridControl(selectedObject as LeafViewModel));
+            }
+            else if (selectedObject is ContainerViewModel)
+            {
+                propertyGridPlaceholder.Children.Clear();
+                propertyGridPlaceholder.Children.Add(new ContainerPropertyGridControl(selectedObject as ContainerViewModel));
+            }
+            else if (selectedObject is GroupingViewModel)
+            {
+                propertyGridPlaceholder.Children.Clear();
+                var grouping = selectedObject as GroupingViewModel;
+                Module module = null;
+                if (grouping != null)
+                {
+                    module = _dataBase.Modules.FirstOrDefault(m => m.Prefix == grouping.Prefix);
+
+                    ModuleViewModel moduleViewModel = new ModuleViewModel
+                    {
+                        Name = module.Name,
+                        Prefix = module.Prefix,
+                        Namespace = module.Namespace,
+                        YangVersion = module.YangVersion,
+                        Description = module.Description
+                    };
+
+                    propertyGridPlaceholder.Children.Add(new ModulePropertyGridControl(moduleViewModel));
+                }
+                
+            }
+            else if (selectedObject is ListViewModel)
+            {
+                propertyGridPlaceholder.Children.Clear();
+                propertyGridPlaceholder.Children.Add(new ListPropertyGridControl(selectedObject as ListViewModel));
+            }
         }
     }
 }
