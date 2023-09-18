@@ -15,21 +15,16 @@ namespace openconfig_yang_tree_view.Mappings
         public static void RegisterMappings()
         {
             TypeAdapterConfig<Grouping, GroupingViewModel>.NewConfig()
-                .Map(dest => dest.Name, src => src.Name)
-                .Map(dest => dest.Description, src => src.Description)
                 .AfterMapping((src, dest) => dest.Children.AddRange(src.Containers.Adapt<List<ContainerViewModel>>()))
                 .AfterMapping((src, dest) => dest.Children.AddRange(src.Leafs.Adapt<List<LeafViewModel>>()));
 
 
             TypeAdapterConfig<Container, ContainerViewModel>.NewConfig()
-                .Map(dest => dest.Name, src => src.Name)
-                .Map(dest => dest.Description, src => src.Description)
                 .AfterMapping((src, dest) => dest.Children.AddRange(src.Containers.Adapt<List<ContainerViewModel>>()))
-                .AfterMapping((src, dest) => dest.Children.AddRange(src.Lists.Adapt<List<ListViewModel>>()));
+                .AfterMapping((src, dest) => dest.Children.AddRange(src.Lists.Adapt<List<ListViewModel>>()))
+                .AfterMapping((src, dest) => dest.Children.AddRange(src.Leafs.Adapt<List<LeafViewModel>>()));
 
             TypeAdapterConfig<YangList, ListViewModel>.NewConfig()
-                .Map(dest => dest.Name, src => src.Name)
-                .Map(dest => dest.Description, src => src.Description)
                 .AfterMapping((src, dest) => dest.Children.AddRange(src.Containers.Adapt<List<ContainerViewModel>>()))
                 .AfterMapping((src, dest) => dest.Children.AddRange(src.Lists.Adapt<List<ListViewModel>>()))
                 .AfterMapping((src, dest) => dest.Children.AddRange(src.Leafs.Adapt<List<LeafViewModel>>()));

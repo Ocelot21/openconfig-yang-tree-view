@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace openconfig_yang_tree_view.Services
 {
@@ -41,44 +42,6 @@ namespace openconfig_yang_tree_view.Services
             }
         }
 
-        private GroupingViewModel CreateGroupingViewModel(Grouping root)
-        {
-            return null;
-        }
-
-        //public void FillTree(Tree tree)
-        //{
-
-        //    foreach (var module in _dataBase.Modules.Where(m => m.Root != null))
-        //    {
-        //        foreach (var container in module.Root.Containers)
-        //        {
-        //            ImplementUsesToContainer(container);
-        //        }
-
-        //        tree.Roots.Add(module.Root);
-        //    }
-
-        //    if (tree.Roots.Count == 0)
-        //    {
-        //        foreach (var module in _dataBase.Modules)
-        //        {
-        //            module.AddUsesFromAllNodes();
-        //            foreach (var grouping in module.Groupings)
-        //            {
-        //                if (!module.Uses.Any(u => u.Name == grouping.Name))
-        //                {
-        //                    foreach (var container in grouping.Containers)
-        //                    {
-        //                        ImplementExternalUsesToContainer(container);
-        //                    }
-
-        //                    tree.Roots.Add(grouping);
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
 
         private void ImplementUsesToContainer(Container container)
         {
@@ -93,6 +56,16 @@ namespace openconfig_yang_tree_view.Services
                 {
                     ImplementUse(container, use);
                     use.IsImplemented = true;
+                }
+            }
+
+            foreach (var list in container.Lists)
+            {
+                ImplementUsesToList(list);
+
+                foreach (var subContainer in list.Containers)
+                {
+                    ImplementUsesToContainer(subContainer);
                 }
             }
         }
@@ -121,16 +94,55 @@ namespace openconfig_yang_tree_view.Services
 
             foreach (var subContainer in grouping.Containers)
             {
-                container.Containers.Add(subContainer);
                 ImplementUsesToContainer(subContainer);
+                container.Containers.Add(subContainer);
             }
 
-            foreach (var subUses in grouping.Uses)
+            foreach (var subUse in grouping.Uses)
             {
-                ImplementUse(container, subUses);
+                ImplementUse(container, subUse);
             }
         }
 
-        //private void ImplementInternalUses()
+        private void ImplementUsesToList(YangList list)
+        {
+            foreach (var use in list.Uses)
+            {
+                if (use.IsImplemented)
+                {
+                    continue;
+                }
+
+                Module module = _dataBase.Modules.FirstOrDefault(m => m.Prefix == use.Prefix);
+                if (module == null)
+                {
+                    continue;
+                }
+
+                Grouping grouping = module.Groupings.FirstOrDefault(g =>  g.Name == use.Name);
+                if (grouping == null)
+                {
+                    continue;
+                }
+
+                foreach (var container in grouping.Containers)
+                {
+                    if (!list.Containers.Contains(container))
+                    {
+                        ImplementUsesToContainer(container);
+                        list.Containers.Add(container);                    
+                    }
+                }
+
+                foreach (var leaf in grouping.Leafs)
+                {
+                    if (!list.Leafs.Contains(leaf))
+                    {
+                        list.Leafs.Add(leaf);
+                    }
+                }
+
+            }
+        }
     }
 }
