@@ -144,5 +144,28 @@ namespace openconfig_yang_tree_view.Services
 
             }
         }
+
+        public ModuleViewModel GetModuleViewModelByPrefix(string prefix)
+        {
+            Module module = null;
+
+            module = _dataBase.Modules.FirstOrDefault(m => m.Prefix == prefix);
+
+            if (module == null)
+            {
+                return null;
+            }
+
+            ModuleViewModel moduleViewModel = new ModuleViewModel
+            {
+                Name = module.Name,
+                Prefix = module.Prefix,
+                Namespace = module.Namespace,
+                YangVersion = module.YangVersion,
+                Description = module.Description
+            };
+
+            return moduleViewModel;
+        }
     }
 }

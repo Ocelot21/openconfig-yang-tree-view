@@ -22,7 +22,6 @@ namespace openconfig_yang_tree_view.MVVM.Views
 
     public partial class YangTreeView : UserControl
     {
-        private InMemoryDb _dataBase = DataAccessService.YangDatabase;
         private TreeViewService _treeViewService = new TreeViewService();
         private TreeViewModel _tree = new TreeViewModel();
 
@@ -51,22 +50,17 @@ namespace openconfig_yang_tree_view.MVVM.Views
             {
                 propertyGridPlaceholder.Children.Clear();
                 var grouping = selectedObject as GroupingViewModel;
-                Module module = null;
                 if (grouping != null)
                 {
-                    module = _dataBase.Modules.FirstOrDefault(m => m.Prefix == grouping.Prefix);
-
-                    ModuleViewModel moduleViewModel = new ModuleViewModel
+                    ModuleViewModel moduleViewModel = _treeViewService.GetModuleViewModelByPrefix(grouping.Prefix);
                     {
-                        Name = module.Name,
-                        Prefix = module.Prefix,
-                        Namespace = module.Namespace,
-                        YangVersion = module.YangVersion,
-                        Description = module.Description
-                    };
-
-                    propertyGridPlaceholder.Children.Add(new ModulePropertyGridControl(moduleViewModel));
+                        if (moduleViewModel != null)
+                        {
+                            propertyGridPlaceholder.Children.Add(new ModulePropertyGridControl(moduleViewModel));
+                        }
+                    }
                 }
+                
                 
             }
             else if (selectedObject is ListViewModel)
