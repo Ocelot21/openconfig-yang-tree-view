@@ -10,6 +10,9 @@
     <Compile Update="AltWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\AltFilesView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\ContainerPropertyGridControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -39,6 +42,9 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="MVVM\Views\AltFilesView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MVVM\Views\ContainerPropertyGridControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -58,6 +64,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\YangTreeView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\FilesPathTextboxTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\MenuButtonTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\ParseButtonTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Theme\ScrollableTextBoxTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

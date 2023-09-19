@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\App.xaml
-9647647681
+141530104687
 
-37-1851047073
+411929538513
 2091464548324
-AltWindow.xaml;MainWindow.xaml;MVVM\Views\ContainerPropertyGridControl.xaml;MVVM\Views\FilesView.xaml;MVVM\Views\LeafPropertyGridControl.xaml;MVVM\Views\ListPropertyGridControl.xaml;MVVM\Views\ModulePropertyGridControl.xaml;MVVM\Views\SettingsView.xaml;MVVM\Views\YangTreeView.xaml;
+AltWindow.xaml;MainWindow.xaml;MVVM\Views\AltFilesView.xaml;MVVM\Views\ContainerPropertyGridControl.xaml;MVVM\Views\FilesView.xaml;MVVM\Views\LeafPropertyGridControl.xaml;MVVM\Views\ListPropertyGridControl.xaml;MVVM\Views\ModulePropertyGridControl.xaml;MVVM\Views\SettingsView.xaml;MVVM\Views\YangTreeView.xaml;Theme\FilesPathTextboxTheme.xaml;Theme\MenuButtonTheme.xaml;Theme\ParseButtonTheme.xaml;Theme\ScrollableTextBoxTheme.xaml;
 
 True
 

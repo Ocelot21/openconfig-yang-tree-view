@@ -100,3 +100,10 @@ C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-t
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\ListPropertyGridControl.baml
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\AltWindow.g.cs
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\AltWindow.baml
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\Theme\MenuButtonTheme.baml
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\App.baml
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\Theme\FilesPathTextboxTheme.baml
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\Theme\ScrollableTextBoxTheme.baml
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\Theme\ParseButtonTheme.baml
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\AltFilesView.g.cs
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\AltFilesView.baml

@@ -2,8 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:openconfig_yang_tree_view"
-             StartupUri="MainWindow.xaml">
+             StartupUri="AltWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/FilesPathTextboxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ScrollableTextBoxTheme.xaml"/>
+                <ResourceDictionary Source="Theme/ParseButtonTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
