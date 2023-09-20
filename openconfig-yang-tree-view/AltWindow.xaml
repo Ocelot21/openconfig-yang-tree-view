@@ -4,19 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:openconfig_yang_tree_view"
+        xmlns:viewModel="clr-namespace:openconfig_yang_tree_view.MVVM.ViewModels"
         mc:Ignorable="d"
         Height="600" Width="920"
         WindowStyle="None"
-        ResizeMode="NoResize"
         Background="Transparent"
-        AllowsTransparency="True">
-    <Border Background="#00517d" CornerRadius="20">
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Border Background="#003958" CornerRadius="0">
+        <!--#003958 -->
         <Grid Margin="2,0,-2,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
                 <RowDefinition/>
@@ -25,14 +27,13 @@
             <TextBlock Text="skyline" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontSize="22" Margin="20, 0, 0, 0"/>
 
             <StackPanel Grid.Row="1">
-                <RadioButton Content="Files" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"/>
-                <RadioButton Content="Tree View" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}"/>
-                <RadioButton Content="Settings" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="Files" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding Path=NavigateToFilesCommand}" />
+                <RadioButton Content="Tree View" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding Path=NavigateToYangTreeViewCommand}"/>
+                <RadioButton Content="Settings" Height="50" Foreground="White" FontSize="14" Style="{StaticResource MenuButtonTheme}" Command="{Binding Path=NavigateToSettingsCommand}"/>
             </StackPanel>
 
-            <ContentControl Name="contentControl" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+            <ContentControl Name="contentControl" Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Content="{Binding Path=Navigation.CurrentView}"/>
         </Grid>
 
-        
     </Border>
 </Window>

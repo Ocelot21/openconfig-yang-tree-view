@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "5ajVgRIjLPVuo7c0oy+plJzV+IGHnSTxpsVhHxZa8rJHh7JCo4yCgFiAq2aaoIxOrFwqJNs4+FTaVkLN9eoyAA==",
+  "dgSpecHash": "Rnx6VVy+ONSnAmpTyfBxnKV3R3yNXjMhB5fyr3yi2Dp9lBWYh/0jf8PS2rUrDz8pfFi2Qcd1bXSrnsmBHB1l9A==",
   "success": true,
   "projectFilePath": "C:\\Users\\AfanBA\\Desktop\\YangTreeView\\openconfig-yang-tree-view\\openconfig-yang-tree-view\\openconfig-yang-tree-view.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\AfanBA\\.nuget\\packages\\mapster\\7.3.0\\mapster.7.3.0.nupkg.sha512",
     "C:\\Users\\AfanBA\\.nuget\\packages\\mapster.core\\1.2.0\\mapster.core.1.2.0.nupkg.sha512",
     "C:\\Users\\AfanBA\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
+    "C:\\Users\\AfanBA\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
+    "C:\\Users\\AfanBA\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\AfanBA\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\AfanBA\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\AfanBA\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

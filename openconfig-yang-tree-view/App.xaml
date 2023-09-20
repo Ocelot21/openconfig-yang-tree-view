@@ -2,15 +2,29 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:openconfig_yang_tree_view"
-             StartupUri="AltWindow.xaml">
+             xmlns:viewModel="clr-namespace:openconfig_yang_tree_view.MVVM.ViewModels"
+             xmlns:view="clr-namespace:openconfig_yang_tree_view.MVVM.Views">
     <Application.Resources>
         <ResourceDictionary>
+            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/FilesPathTextboxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ScrollableTextBoxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ParseButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/SelectButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            
+            <DataTemplate DataType="{x:Type TypeName=viewModel:FilesViewModel}">
+                <view:AltFilesView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type TypeName=viewModel:TreeViewModel}">
+                <view:YangTreeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type TypeName=viewModel:SettingsViewModel}">
+                <view:SettingsView/>
+            </DataTemplate>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

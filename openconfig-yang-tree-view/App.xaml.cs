@@ -7,6 +7,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Mapster;
+using Microsoft.Extensions.DependencyInjection;
+using openconfig_yang_tree_view.MVVM.ViewModels;
+using openconfig_yang_tree_view.Core;
+using openconfig_yang_tree_view.Services;
 
 namespace openconfig_yang_tree_view
 {
@@ -16,8 +20,33 @@ namespace openconfig_yang_tree_view
     /// 
     public partial class App : Application
     {
+        private readonly ServiceProvider _serviceProvider;
+        public App()
+        {
+            IServiceCollection services = new ServiceCollection();
+
+            services.AddSingleton<AltWindow>(provider => new AltWindow
+            {
+                DataContext = provider.GetRequiredService<MainViewModel>()
+            });
+
+            services.AddSingleton<MainViewModel>();
+            services.AddSingleton<FilesViewModel>();
+            services.AddSingleton<TreeViewModel>();
+            services.AddSingleton<SettingsViewModel>();
+
+            services.AddSingleton<INavigationService, NavigationService>();
+            services.AddSingleton<IFilesService, FilesService>();
+
+            services.AddSingleton<Func<Type, BaseViewModel>>(serviceProvider => viewModelType => (BaseViewModel)serviceProvider.GetRequiredService(viewModelType));
+
+
+            _serviceProvider = services.BuildServiceProvider();
+        }
         protected override void OnStartup(StartupEventArgs e)
         {
+            var mainWindow = _serviceProvider.GetRequiredService<AltWindow>();
+            mainWindow.Show();
             base.OnStartup(e);
             MappingConfig.RegisterMappings();
         }

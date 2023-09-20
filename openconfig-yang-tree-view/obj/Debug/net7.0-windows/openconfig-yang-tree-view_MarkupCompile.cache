@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\App.xaml
-141530104687
+16653116010
 
-39-905904008
-2091464548324
-AltWindow.xaml;MainWindow.xaml;MVVM\Views\AltFilesView.xaml;MVVM\Views\ContainerPropertyGridControl.xaml;MVVM\Views\FilesView.xaml;MVVM\Views\LeafPropertyGridControl.xaml;MVVM\Views\ListPropertyGridControl.xaml;MVVM\Views\ModulePropertyGridControl.xaml;MVVM\Views\SettingsView.xaml;MVVM\Views\YangTreeView.xaml;Theme\FilesPathTextboxTheme.xaml;Theme\MenuButtonTheme.xaml;Theme\ParseButtonTheme.xaml;Theme\ScrollableTextBoxTheme.xaml;
+46-1229040631
+211-1228120536
+AltWindow.xaml;MainWindow.xaml;MVVM\Views\AltFilesView.xaml;MVVM\Views\AltTreeView.xaml;MVVM\Views\ContainerPropertyGridControl.xaml;MVVM\Views\FilesView.xaml;MVVM\Views\LeafPropertyGridControl.xaml;MVVM\Views\ListPropertyGridControl.xaml;MVVM\Views\ModulePropertyGridControl.xaml;MVVM\Views\SettingsView.xaml;MVVM\Views\YangTreeView.xaml;Theme\FilesPathTextboxTheme.xaml;Theme\MenuButtonTheme.xaml;Theme\ParseButtonTheme.xaml;Theme\ScrollableTextBoxTheme.xaml;Theme\SelectButtonTheme.xaml;
 
 False
 

@@ -1,5 +1,4 @@
-﻿using openconfig_yang_tree_view.MVVM.Views;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace openconfig_yang_tree_view
+namespace openconfig_yang_tree_view.MVVM.Views
 {
     /// <summary>
-    /// Interaction logic for AltWindow.xaml
+    /// Interaction logic for AltTreeView.xaml
     /// </summary>
-    public partial class AltWindow : Window
+    public partial class AltTreeView : UserControl
     {
-        public AltWindow()
+        public AltTreeView()
         {
             InitializeComponent();
         }
