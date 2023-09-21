@@ -1,0 +1,34 @@
+﻿<Window x:Class="openconfig_yang_tree_view.MVVM.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:openconfig_yang_tree_view.MVVM.Views" Background="#002032"
+        mc:Ignorable="d" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Title="MainWindow" Height="600" Width="1000">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="skyline" Foreground="#b3e7fa" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" Margin="20, 0, 10, 0"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
+            <Button x:Name="btnMinimze" Content="_" Width="40" Height="40" BorderBrush="Transparent" Background="Transparent" Foreground="#b3e7fa"/>
+            <Button x:Name="btnMaximize" Content="▭" Width="40" Height="40" BorderBrush="Transparent" Background="Transparent" Foreground="#b3e7fa"/>
+            <Button x:Name="btnClose" Content="X" Width="40" Height="40" BorderBrush="Transparent" Background="Transparent" Foreground="#b3e7fa"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <RadioButton Content="Files" Height="50" Foreground="#b3e7fa" FontSize="16" Style="{StaticResource MenuButtonTheme}" Command="{Binding Path=NavigateToFilesCommand}"/>
+            <RadioButton Content="Tree View" Height="50" Foreground="#b3e7fa" FontSize="16" Style="{StaticResource MenuButtonTheme}" Command="{Binding Path=NavigateToYangTreeViewCommand}"/>
+            <RadioButton Content="Settings" Height="50" Foreground="#b3e7fa" FontSize="16" Style="{StaticResource MenuButtonTheme}"/>
+        </StackPanel>
+        <ContentControl Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Path=Navigation.CurrentView}"/>
+    </Grid>
+</Window>

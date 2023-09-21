@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using openconfig_yang_tree_view.MVVM.ViewModels;
 using openconfig_yang_tree_view.Core;
 using openconfig_yang_tree_view.Services;
+using openconfig_yang_tree_view.MVVM.Views;
 
 namespace openconfig_yang_tree_view
 {
@@ -25,7 +26,7 @@ namespace openconfig_yang_tree_view
         {
             IServiceCollection services = new ServiceCollection();
 
-            services.AddSingleton<AltWindow>(provider => new AltWindow
+            services.AddSingleton<MainWindow>(provider => new MainWindow
             {
                 DataContext = provider.GetRequiredService<MainViewModel>()
             });
@@ -45,7 +46,7 @@ namespace openconfig_yang_tree_view
         }
         protected override void OnStartup(StartupEventArgs e)
         {
-            var mainWindow = _serviceProvider.GetRequiredService<AltWindow>();
+            var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
             mainWindow.Show();
             base.OnStartup(e);
             MappingConfig.RegisterMappings();

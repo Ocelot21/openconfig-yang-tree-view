@@ -5,20 +5,17 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border CornerRadius="0"
-                            Background="Transparent"
-                            Width="250" Height="350"
-                            BorderThickness="1"
-                            BorderBrush="#4dc6f4">
+                            Background="#00293f"
+                            Width="250" Height="350">
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="1"
                                      Text="{TemplateBinding Text}"
                                      BorderThickness="0"
                                      Background="Transparent"
-                                     VerticalAlignment="Center"
+                                     VerticalAlignment="Top"
                                      Padding="5"
-                                     Foreground="#80d7f7"
-                                     x:Name="FilesPath"
+                                     Foreground="#b3e7fa"
                                      IsReadOnly="True"
                                      VerticalScrollBarVisibility="Auto"
                                      HorizontalScrollBarVisibility="Auto"/>

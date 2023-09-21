@@ -8,15 +8,18 @@
         <ResourceDictionary>
             
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
-                <ResourceDictionary Source="Theme/FilesPathTextboxTheme.xaml"/>
-                <ResourceDictionary Source="Theme/ScrollableTextBoxTheme.xaml"/>
-                <ResourceDictionary Source="Theme/ParseButtonTheme.xaml"/>
-                <ResourceDictionary Source="Theme/SelectButtonTheme.xaml"/>
+                <ResourceDictionary Source="Themes/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Themes/FilesPathTextboxTheme.xaml"/>
+                <ResourceDictionary Source="Themes/ScrollableTextBoxTheme.xaml"/>
+                <ResourceDictionary Source="Themes/ParseButtonTheme.xaml"/>
+                <ResourceDictionary Source="Themes/SelectButtonTheme.xaml"/>
+                <ResourceDictionary Source="Themes/TreeViewTheme.xaml"/>
+                <ResourceDictionary Source="Themes/PropertyTextboxTheme.xaml"/>
+                <ResourceDictionary Source="Themes/MultilinePropertyTextboxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <DataTemplate DataType="{x:Type TypeName=viewModel:FilesViewModel}">
-                <view:AltFilesView/>
+                <view:FilesView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type TypeName=viewModel:TreeViewModel}">
                 <view:YangTreeView/>

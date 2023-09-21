@@ -6,10 +6,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border CornerRadius="0"
-                            Background="Transparent"
-                            Width="350" Height="40"
-                            BorderThickness="1"
-                            BorderBrush="#4dc6f4">
+                            Background="#00293f"
+                            MinWidth="350" MinHeight="40"
+                            BorderThickness="0.5"
+                            BorderBrush="#66cef5">
                         <Grid>
                             <Rectangle StrokeThickness="1"/>
                             <TextBox Margin="1"
@@ -18,7 +18,7 @@
                                      Background="Transparent"
                                      VerticalAlignment="Center"
                                      Padding="5"
-                                     Foreground="#4dc6f4"
+                                     Foreground="#99dff9"
                                      x:Name="FilesPath"
                                      IsEnabled="False"/>
 
@@ -28,7 +28,7 @@
                                        HorizontalAlignment="Left"
                                        Margin="10, 0, 0, 0"
                                        FontSize="11"
-                                       Foreground="#4dc6f4"
+                                       Foreground="#66cef5"
                                        Grid.Column="1">
                                 <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}">

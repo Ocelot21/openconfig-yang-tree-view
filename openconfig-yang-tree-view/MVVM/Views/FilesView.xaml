@@ -4,41 +4,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:openconfig_yang_tree_view.MVVM.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="300"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel  Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2">
-            <TextBox x:Name="txtFolderPath" TextWrapping="Wrap" Text="Select a folder to parse from..." FontSize="16" IsEnabled="False" Height="30" Width="500" Margin="0,0,10,0"/>
-            <Button x:Name="btnSelect" Content="Select" Height="30" Width="93" Margin="10,0,10,0" Click="btnSelect_Click"/>
-            <Button x:Name="btnParse" Content="Parse" Height="30" Width="93" Margin="10,0,0,0" IsEnabled="False" Click="btnParse_Click"/>
+             xmlns:converter="clr-namespace:openconfig_yang_tree_view.Converters"
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <converter:StringNullOrEmptyToBooleanConverter x:Key="StringNullOrEmptyToBooleanConverter" />
+    </UserControl.Resources>
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="auto">
+            <TextBox MinWidth="350" MinHeight="40" Margin="10, 0, 10, 0" Style="{StaticResource FilesPathTextbox}" Text="{Binding Path=SelectedFolderPath}"/>
+            <Button MinWidth="100" MinHeight="38" Margin="10, 0, 10, 0" Content="Select" Style="{StaticResource SelectButtonTheme}" Command="{Binding Path=SelectFolderCommand}"/>
+            <Button MinWidth="100" MinHeight="38" Margin="10, 0, 10, 0" Content="Parse" Style="{StaticResource ParseButtonTheme}" IsEnabled="{Binding SelectedFolderPath, Converter={StaticResource StringNullOrEmptyToBooleanConverter}}" Command="{Binding Path=ParseFromFolderCommand}">
+            </Button>
         </StackPanel>
-        <Grid Grid.Row="1" Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label FontSize="16" HorizontalAlignment="Center">Parsed files:</Label>
-            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                <TextBox x:Name="txtParsed" IsReadOnly="True" Height="230" Width="250"></TextBox>
-            </ScrollViewer>
-        </Grid>
-        <Grid Grid.Row="1" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Label FontSize="16" HorizontalAlignment="Center">Missing files:</Label>
-            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                <TextBox x:Name="txtMissing" IsReadOnly="True" Height="229" Width="250"></TextBox>
-            </ScrollViewer>
-        </Grid>
-    </Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 60, 0, 0">
+            <StackPanel Margin="0, 0, 20, 0">
+                <TextBlock FontSize="18" Foreground="#b3e7fa" Text="Missing files" HorizontalAlignment="Center"/>
+                <TextBox Width="250" Height="350" Margin="5" HorizontalAlignment="Center" Style="{StaticResource ScrollableTextBoxStyle}" Text="{Binding Path=ParsedFiles}"/>
+            </StackPanel>
+            <StackPanel Margin="0, 0, 20, 0">
+                <TextBlock FontSize="18" Foreground="#b3e7fa" Text="Parsed files" HorizontalAlignment="Center"/>
+                <TextBox Width="250" Height="350" Margin="5" HorizontalAlignment="Center" Style="{StaticResource ScrollableTextBoxStyle}" Text="{Binding Path=MissingFiles}"/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+
 </UserControl>
+<!--d:DesignHeight="400" d:DesignWidth="800"-->

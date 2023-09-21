@@ -5,22 +5,24 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:openconfig_yang_tree_view.MVVM.Views"
       xmlns:viewmodels="clr-namespace:openconfig_yang_tree_view.MVVM.ViewModels"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+      mc:Ignorable="d">
+    <UserControl.Resources>
+        
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="600" />
         </Grid.ColumnDefinitions>
 
-        <TreeView Grid.Column="0" ItemsSource="{Binding Roots}" Name="treeView" SelectedItemChanged="treeView_SelectedItemChanged">
+        <TreeView Grid.Column="0" ItemsSource="{Binding Roots}" Name="treeView" SelectedItemChanged="treeView_SelectedItemChanged" Background="Transparent" FontSize="16" BorderThickness="0.5" BorderBrush="#80d7f7" Margin="20,10,10,10">
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type viewmodels:TreeNodeViewModel}" ItemsSource="{Binding Children}">
-                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text="{Binding Name}" Foreground="#b3e7fa" />
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
 
-        <StackPanel x:Name="propertyGridPlaceholder" Grid.Column="1"/>
+        <StackPanel x:Name="propertyGridPlaceholder" Grid.Column="1" Margin="30, 10, 10, 10"/>
     </Grid>
 </UserControl>

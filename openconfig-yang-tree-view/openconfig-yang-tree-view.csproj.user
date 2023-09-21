@@ -28,6 +28,9 @@
     <Compile Update="MVVM\Views\ListPropertyGridControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\MainWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\ModulePropertyGridControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,9 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="AltWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\AltFilesView.xaml">
@@ -63,6 +63,9 @@
     <Page Update="MVVM\Views\ListPropertyGridControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="MVVM\Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MVVM\Views\ModulePropertyGridControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -72,19 +75,28 @@
     <Page Update="MVVM\Views\YangTreeView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Theme\FilesPathTextboxTheme.xaml">
+    <Page Update="Themes\FilesPathTextboxTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Theme\MenuButtonTheme.xaml">
+    <Page Update="Themes\MenuButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Theme\ParseButtonTheme.xaml">
+    <Page Update="Themes\MultilinePropertyTextboxTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Theme\ScrollableTextBoxTheme.xaml">
+    <Page Update="Themes\ParseButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Theme\SelectButtonTheme.xaml">
+    <Page Update="Themes\PropertyTextboxTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\ScrollableTextBoxTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\SelectButtonTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\TreeViewTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
