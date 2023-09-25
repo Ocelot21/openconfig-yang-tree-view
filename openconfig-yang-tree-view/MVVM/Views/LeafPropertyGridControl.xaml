@@ -12,7 +12,7 @@
         <TextBox Text="{Binding Name}" Margin="5" IsReadOnly="True" Style="{StaticResource PropertyTextboxTheme}"/>
 
         <TextBlock Text="Description:" Margin="5" Foreground="#80d7f7" />
-        <TextBox Text="{Binding Description}" Margin="5" IsReadOnly="True" Style="{StaticResource PropertyTextboxTheme}"/>
+        <TextBox Text="{Binding Description}" Margin="5" IsReadOnly="True" Style="{StaticResource MultilineTextboxStyle}"/>
 
         <TextBlock Text="Config:" Margin="5" Foreground="#80d7f7" />
         <TextBox Text="{Binding Config}" Margin="5" IsReadOnly="True" Style="{StaticResource PropertyTextboxTheme}"/>
