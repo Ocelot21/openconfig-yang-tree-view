@@ -11,8 +11,8 @@
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="600" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
 
         <TreeView Grid.Column="0" ItemsSource="{Binding Roots}" Name="treeView" SelectedItemChanged="treeView_SelectedItemChanged" Background="Transparent" FontSize="16" BorderThickness="0.5" BorderBrush="#80d7f7" Margin="20,10,10,10">

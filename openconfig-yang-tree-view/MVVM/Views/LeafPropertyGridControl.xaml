@@ -5,37 +5,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:openconfig_yang_tree_view.MVVM.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="400">
+             mc:Ignorable="d" >
 
-    <Grid>
-        <!-- Define the layout and structure of your property grid here -->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+    <StackPanel>
+        <TextBlock Text="Name:" Margin="5" Foreground="#80d7f7" />
+        <TextBox Text="{Binding Name}" Margin="5" IsReadOnly="True" Style="{StaticResource PropertyTextboxTheme}"/>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+        <TextBlock Text="Description:" Margin="5" Foreground="#80d7f7" />
+        <TextBox Text="{Binding Description}" Margin="5" IsReadOnly="True" Style="{StaticResource PropertyTextboxTheme}"/>
 
-        <!-- Property Name -->
-        <TextBlock Text="Name:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="5" />
-        <TextBox Text="{Binding Name}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="5" IsReadOnly="True" />
+        <TextBlock Text="Config:" Margin="5" Foreground="#80d7f7" />
+        <TextBox Text="{Binding Config}" Margin="5" IsReadOnly="True" Style="{StaticResource PropertyTextboxTheme}"/>
 
-        <!-- Property Description -->
-        <TextBlock Text="Description:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5" />
-        <TextBox Text="{Binding Description}" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="5" IsReadOnly="True" />
-
-        <!-- Property Config -->
-        <TextBlock Text="Config:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="5" />
-        <TextBox Text="{Binding Config}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="5" IsReadOnly="True" />
-
-        <!-- Property Type -->
-        <TextBlock Text="Type:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="5" />
-        <TextBox Text="{Binding Type}" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="5" IsReadOnly="True" />
-    </Grid>
+        <TextBlock Text="Type:" Margin="5" Foreground="#80d7f7"/>
+        <TextBox Text="{Binding Type}" Margin="5" IsReadOnly="True" Style="{StaticResource PropertyTextboxTheme}" />
+    </StackPanel>
 </UserControl>

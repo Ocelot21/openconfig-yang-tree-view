@@ -13,7 +13,6 @@
                 <ResourceDictionary Source="Themes/ScrollableTextBoxTheme.xaml"/>
                 <ResourceDictionary Source="Themes/ParseButtonTheme.xaml"/>
                 <ResourceDictionary Source="Themes/SelectButtonTheme.xaml"/>
-                <ResourceDictionary Source="Themes/TreeViewTheme.xaml"/>
                 <ResourceDictionary Source="Themes/PropertyTextboxTheme.xaml"/>
                 <ResourceDictionary Source="Themes/MultilinePropertyTextboxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>

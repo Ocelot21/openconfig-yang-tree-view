@@ -7,15 +7,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="AltWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="MVVM\Views\AltFilesView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="MVVM\Views\AltTreeView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="MVVM\Views\ContainerPropertyGridControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -42,15 +33,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="AltWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="MVVM\Views\AltFilesView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="MVVM\Views\AltTreeView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="MVVM\Views\ContainerPropertyGridControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -94,9 +76,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\SelectButtonTheme.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\TreeViewTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
