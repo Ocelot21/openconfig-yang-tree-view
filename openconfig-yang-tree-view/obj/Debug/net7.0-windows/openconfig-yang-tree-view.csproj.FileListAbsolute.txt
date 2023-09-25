@@ -96,15 +96,9 @@ C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-t
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\ModulePropertyGridControl.baml
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\ListPropertyGridControl.g.cs
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\ListPropertyGridControl.baml
-C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\AltWindow.g.cs
-C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\AltWindow.baml
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\App.baml
-C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\AltFilesView.g.cs
-C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\AltFilesView.baml
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\AltTreeView.g.cs
-C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\AltTreeView.baml
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\MainWindow.g.cs
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\MainWindow.baml
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\Themes\FilesPathTextboxTheme.baml
@@ -114,7 +108,6 @@ C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-t
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\Themes\PropertyTextboxTheme.baml
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\Themes\ScrollableTextBoxTheme.baml
 C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\Themes\SelectButtonTheme.baml
-C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\Themes\TreeViewTheme.baml
 C:\Users\Afan\Desktop\Skyline\openconfig-yang-tree-view\bin\Debug\net7.0-windows\openconfig-yang-tree-view.exe
 C:\Users\Afan\Desktop\Skyline\openconfig-yang-tree-view\bin\Debug\net7.0-windows\openconfig-yang-tree-view.deps.json
 C:\Users\Afan\Desktop\Skyline\openconfig-yang-tree-view\bin\Debug\net7.0-windows\openconfig-yang-tree-view.runtimeconfig.json

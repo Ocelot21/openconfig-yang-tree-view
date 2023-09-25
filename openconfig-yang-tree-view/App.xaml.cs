@@ -37,6 +37,7 @@ namespace openconfig_yang_tree_view
             services.AddSingleton<SettingsViewModel>();
 
             services.AddSingleton<INavigationService, NavigationService>();
+            services.AddSingleton<IWindowService, WindowService>();
             services.AddSingleton<IFilesService, FilesService>();
 
             services.AddSingleton<Func<Type, BaseViewModel>>(serviceProvider => viewModelType => (BaseViewModel)serviceProvider.GetRequiredService(viewModelType));
