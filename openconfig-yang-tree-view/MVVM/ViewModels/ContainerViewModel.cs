@@ -10,5 +10,6 @@ namespace openconfig_yang_tree_view.MVVM.ViewModels
     public class ContainerViewModel : TreeNodeViewModel
     { 
         public bool Config { get; set; }
+        public string Path { get; set; }
     }
 }

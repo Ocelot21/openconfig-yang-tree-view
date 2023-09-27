@@ -10,5 +10,6 @@ namespace openconfig_yang_tree_view.MVVM.ViewModels
     {
         public bool Config { get; set; }
         public string Type { get; set; }
+        public string Path { get; set; }
     }
 }

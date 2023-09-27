@@ -18,4 +18,8 @@
     <Folder Include="Images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\openconfig-yang-tree-view.GnmiClient\openconfig-yang-tree-view.GnmiClient.csproj" />
+  </ItemGroup>
+
 </Project>

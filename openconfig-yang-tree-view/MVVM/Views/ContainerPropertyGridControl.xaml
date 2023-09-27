@@ -14,5 +14,8 @@
 
         <TextBlock Text="Config:" Margin="5" Foreground="#80d7f7" />
         <TextBox Text="{Binding Config}" Margin="5" IsReadOnly="True" Style="{StaticResource PropertyTextboxTheme}"/>
+
+        <TextBlock Text="Path:" Margin="5" Foreground="#80d7f7"/>
+        <TextBox Text="{Binding Path}" Margin="5" IsReadOnly="True" Style="{StaticResource PropertyTextboxTheme}" />
     </StackPanel>
 </UserControl>

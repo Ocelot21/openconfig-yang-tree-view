@@ -221,11 +221,6 @@ namespace openconfig_yang_tree_view.Services
             }
 
             module.Groupings = GetAllGroupings(groupingsLines, module.Prefix);
-
-            if (module.RootUse != null)
-            {
-                module.Root = module.Groupings.FirstOrDefault(x => x.Name == module.RootUse.Name);
-            }
         }
 
         private List<Grouping> GetAllGroupings(List<List<string>> groupingsLines, string modulePrefix)

@@ -206,3 +206,14 @@ C:\Users\Afan\Desktop\Skyline\openconfig-yang-tree-view\openconfig-yang-tree-vie
 C:\Users\Afan\Desktop\Skyline\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\openconfig-yang-tree-view.pdb
 C:\Users\Afan\Desktop\Skyline\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\openconfig-yang-tree-view.genruntimeconfig.cache
 C:\Users\Afan\Desktop\Skyline\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\ref\openconfig-yang-tree-view.dll
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\Themes\GetResponseTextboxTheme.baml
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\GnmiGetWindow.g.cs
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\obj\Debug\net7.0-windows\MVVM\Views\GnmiGetWindow.baml
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\bin\Debug\net7.0-windows\Google.Protobuf.dll
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\bin\Debug\net7.0-windows\Grpc.Core.Api.dll
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\bin\Debug\net7.0-windows\Grpc.Net.Client.dll
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\bin\Debug\net7.0-windows\Grpc.Net.Common.dll
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\bin\Debug\net7.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\bin\Debug\net7.0-windows\openconfig-yang-tree-view.GnmiClient.dll
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\bin\Debug\net7.0-windows\openconfig-yang-tree-view.GnmiClient.pdb
+C:\Users\AfanBA\Desktop\YangTreeView\openconfig-yang-tree-view\openconfig-yang-tree-view\bin\Debug\net7.0-windows\Newtonsoft.Json.dll

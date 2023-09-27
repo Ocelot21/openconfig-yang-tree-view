@@ -13,6 +13,9 @@
     <Compile Update="MVVM\Views\FilesView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\GnmiGetWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\LeafPropertyGridControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -39,6 +42,9 @@
     <Page Update="MVVM\Views\FilesView.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="MVVM\Views\GnmiGetWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MVVM\Views\LeafPropertyGridControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -58,6 +64,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\FilesPathTextboxTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\GetResponseTextboxTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\MenuButtonTheme.xaml">

@@ -26,5 +26,14 @@ namespace openconfig_yang_tree_view.MVVM.Views
             InitializeComponent();
             DataContext = leafViewModel;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is LeafViewModel leafViewModel)
+            {
+                var gnmiGetWindow = new GnmiGetWindow(leafViewModel);
+                gnmiGetWindow.ShowDialog();
+            }         
+        }
     }
 }

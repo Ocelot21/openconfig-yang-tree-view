@@ -60,14 +60,13 @@ namespace openconfig_yang_tree_view.MVVM.Views
                         }
                     }
                 }
-                
-                
             }
             else if (selectedObject is ListViewModel)
             {
                 propertyGridPlaceholder.Children.Clear();
                 propertyGridPlaceholder.Children.Add(new ListPropertyGridControl(selectedObject as ListViewModel));
             }
+
         }
     }
 }

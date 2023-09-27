@@ -2,6 +2,8 @@
 using openconfig_yang_tree_view.DataAccess;
 using openconfig_yang_tree_view.MVVM.Model;
 using openconfig_yang_tree_view.MVVM.ViewModels;
+using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace openconfig_yang_tree_view.Services
@@ -34,6 +36,8 @@ namespace openconfig_yang_tree_view.Services
                     treeViewModel.Roots.Add(groupingViewModel);
                 }
             }
+
+            GeneratePaths(treeViewModel.Roots);
         }
 
 
@@ -160,6 +164,35 @@ namespace openconfig_yang_tree_view.Services
             };
 
             return moduleViewModel;
+        }
+
+        private void GeneratePaths(ObservableCollection<GroupingViewModel> roots)
+        {
+            foreach (var grouping in roots)
+            {
+                GeneratePaths(grouping, string.Empty);
+            }
+        }
+
+        private void GeneratePaths(TreeNodeViewModel node, string currentPath)
+        {
+            if (node is GroupingViewModel)
+            {
+                foreach (var subNode in node.Children)
+                {
+                    GeneratePaths(subNode, currentPath);
+                }
+            }
+            else if (node is LeafViewModel || node is ListViewModel || node is ContainerViewModel)
+            {
+                currentPath += "/" + node.Name;
+                ((dynamic)node).Path = currentPath;
+
+                foreach (var subNode in node.Children)
+                {
+                    GeneratePaths(subNode, currentPath);
+                }
+            }
         }
     }
 }

@@ -15,6 +15,7 @@
                 <ResourceDictionary Source="Themes/SelectButtonTheme.xaml"/>
                 <ResourceDictionary Source="Themes/PropertyTextboxTheme.xaml"/>
                 <ResourceDictionary Source="Themes/MultilinePropertyTextboxTheme.xaml"/>
+                <ResourceDictionary Source="Themes/GetResponseTextboxTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <DataTemplate DataType="{x:Type TypeName=viewModel:FilesViewModel}">

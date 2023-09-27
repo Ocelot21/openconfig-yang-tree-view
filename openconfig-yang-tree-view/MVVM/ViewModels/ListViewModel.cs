@@ -11,5 +11,6 @@ namespace openconfig_yang_tree_view.MVVM.ViewModels
     public class ListViewModel : TreeNodeViewModel
     {
         public string Key { get; set; }
+        public string Path { get; set; }
     }
 }
