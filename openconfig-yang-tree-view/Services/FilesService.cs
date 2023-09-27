@@ -203,33 +203,6 @@ namespace openconfig_yang_tree_view.Services
                         moduleLines.GetObjectContent(i, out int revisionIndex);
                         i = revisionIndex;
                         break;
-                    case string line when line.StartsWith("leaf "):
-                        Leaf leaf = new Leaf();
-                        leaf.Name = line.Split(' ')[1];
-                        List<string> leafLines = moduleLines.GetObjectContent(i, out int leafIndex).ToList();
-                        ParseLeaf(leafLines, leaf);
-                        module.Leafs.Add(leaf);
-                        i = leafIndex;
-                        break;
-                    case string line when line.StartsWith("leaf-list"):
-                        LeafList leafList = new LeafList();
-                        leafList.Name = line.Split(' ')[1];
-                        List<string> leafListLines = moduleLines.GetObjectContent(i, out int leafListIndex).ToList();
-                        ParseLeaf(leafListLines, leafList);
-                        module.Leafs.Add(leafList);
-                        i = leafListIndex;
-                        break;
-                    case string line when line.StartsWith("container"):
-                        Container container = new Container();
-                        container.Name = line.Split(' ')[1];
-                        List<string> containerLines = moduleLines.GetObjectContent(i, out int containerIndex).ToList();
-                        ParseContainer(containerLines, container, module.Prefix);
-                        if (!module.Containers.Contains(container))
-                        {
-                            module.Containers.Add(container);
-                        }
-                        i = containerIndex;
-                        break;
                     case string line when line.StartsWith("grouping"):
                         List<string> groupingLines = moduleLines.GetObjectContent(i, out int groupingIndex).ToList();
                         groupingsLines.Add(groupingLines);
