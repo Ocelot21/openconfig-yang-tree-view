@@ -60,13 +60,12 @@ namespace openconfig_yang_tree_view.GnmiClient
 
                 string formattedJson = JValue.Parse(getResponse.Notification.ToString()).ToString(Newtonsoft.Json.Formatting.Indented);
 
-
-                return formattedJson;
+                return JsonHelper.DecodeJsonVals(formattedJson.ToString());
             }
             
             catch (Exception ex)
             {
-                return $"An error occured. Message:\n{ex.Message}\nSource:\n{ex.Source}";
+                return $"Error occured. Message:\n{ex.Message}\nSource:\n{ex.Source}";
             }
         }
     }

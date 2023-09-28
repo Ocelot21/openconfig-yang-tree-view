@@ -26,5 +26,14 @@ namespace openconfig_yang_tree_view.MVVM.Views
             DataContext = containerViewModel;
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is ContainerViewModel containerViewModel)
+            {
+                var gnmiGetWindow = new GnmiGetWindow(containerViewModel);
+                gnmiGetWindow.ShowDialog();
+            }
+        }
     }
 }

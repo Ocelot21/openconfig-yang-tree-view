@@ -14,7 +14,10 @@
 
         <TextBlock Text="Key:" Margin="5" Foreground="#80d7f7" />
         <TextBox Text="{Binding Key}" Margin="5" IsReadOnly="True" Style="{StaticResource PropertyTextboxTheme}"/>
+        
         <TextBlock Text="Path:" Margin="5" Foreground="#80d7f7"/>
         <TextBox Text="{Binding Path}" Margin="5" IsReadOnly="True" Style="{StaticResource PropertyTextboxTheme}" />
+
+        <Button Content="Get" Style="{StaticResource SelectButtonTheme}" Margin="5, 15" Click="Button_Click"  Width="400" HorizontalAlignment="Left"/>
     </StackPanel>
 </UserControl>
