@@ -24,7 +24,14 @@ namespace openconfig_yang_tree_view.MVVM.Views
         public GnmiGetWindow(LeafViewModel leaf)
         {
             InitializeComponent();
-            txtResponse.Text = GnmiClientRequests.GetRequest("10.13.1.103", "50051", "admin", "Skyline321", leaf.Path);
+            txtResponse.Text = GnmiClientRequests.GetRequest
+                (Properties.Settings.Default.Ip,
+                Properties.Settings.Default.Port,
+                Properties.Settings.Default.Username,
+                Properties.Settings.Default.Password,
+                Properties.Settings.Default.IsHttps,
+                leaf.Path);
+   
         }
     }
 }

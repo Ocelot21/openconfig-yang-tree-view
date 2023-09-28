@@ -4,9 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:openconfig_yang_tree_view.MVVM.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             xmlns:converters="clr-namespace:openconfig_yang_tree_view.Converters"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:BoolRadioConverter x:Key="BoolRadioConverter" />
+        <converters:BoolRadioConverter x:Key="InverseBoolRadioConverter" Inverse="True" />
+    </UserControl.Resources>
+    <StackPanel Margin="20, 0, 0, 0">
+        <TextBlock Text="IP:" Margin="5" Foreground="#80d7f7" />
+        <TextBox Text="{Binding Ip, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{StaticResource SettingTextboxTheme}"/>
+
+        <TextBlock Text="Port:" Margin="5" Foreground="#80d7f7" />
+        <TextBox Text="{Binding Port, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{StaticResource SettingTextboxTheme}"/>
+
+        <TextBlock Text="Username:" Margin="5" Foreground="#80d7f7"/>
+        <TextBox Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{StaticResource SettingTextboxTheme}" />
+
+        <TextBlock Text="Password:" Margin="5" Foreground="#80d7f7"/>
+        <TextBox Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="5" Style="{StaticResource SettingTextboxTheme}" />
+
+        <TextBlock Text="Choose protocol:" Margin="5" Foreground="#80d7f7"/>
+        <StackPanel Margin="10, 5">
+            <RadioButton Margin="0, 5, 0, 5" Foreground="#80d7f7" Content="Http" IsChecked="{Binding IsHttps,Converter={StaticResource InverseBoolRadioConverter}}" GroupName="Protocol" />
+            <RadioButton Margin="0, 5, 0, 5" Foreground="#80d7f7" Content="Https" IsChecked="{Binding IsHttps, Converter={StaticResource BoolRadioConverter}}" GroupName="Protocol" />
+        </StackPanel>
+        <Button Content="Save" Width="100" Height="38" Margin="0, 20, 0, 0" Style="{StaticResource SelectButtonTheme}" HorizontalAlignment="Left" Command="{Binding Path=SaveCommand}"/>
+    </StackPanel>
 </UserControl>

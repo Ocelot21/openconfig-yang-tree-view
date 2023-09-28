@@ -46,7 +46,7 @@ namespace openconfig_yang_tree_view.MVVM.ViewModels
             WindowService = windowService;
             NavigateToFilesCommand = new RelayCommand(obj => { Navigation.NavigateTo<FilesViewModel>(); }, obj => true);
             NavigateToYangTreeViewCommand = new RelayCommand(obj => { Navigation.NavigateTo<TreeViewModel>(); }, obj => true);
-            NavigateToSettingsCommand = new RelayCommand(obj => { Navigation.NavigateTo<FilesViewModel>(); }, obj => true);
+            NavigateToSettingsCommand = new RelayCommand(obj => { Navigation.NavigateTo<SettingsViewModel>(); }, obj => true);
             MinimizeCommand = new RelayCommand(ExecuteMinimizeCommand, obj => true);
             MaximizeCommand = new RelayCommand(ExecuteMaximizeCommand, obj => true);
             CloseCommand = new RelayCommand(ExecuteCloseCommand, obj => true);

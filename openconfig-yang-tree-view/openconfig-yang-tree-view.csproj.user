@@ -87,5 +87,8 @@
     <Page Update="Themes\SelectButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Themes\SettingTextboxTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

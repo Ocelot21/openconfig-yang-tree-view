@@ -27,7 +27,7 @@
         <StackPanel Grid.Row="1">
             <RadioButton Content="Files" Height="50" Foreground="#b3e7fa" FontSize="16" Style="{StaticResource MenuButtonTheme}" Command="{Binding Path=NavigateToFilesCommand}"/>
             <RadioButton Content="Tree View" Height="50" Foreground="#b3e7fa" FontSize="16" Style="{StaticResource MenuButtonTheme}" Command="{Binding Path=NavigateToYangTreeViewCommand}"/>
-            <RadioButton Content="Settings" Height="50" Foreground="#b3e7fa" FontSize="16" Style="{StaticResource MenuButtonTheme}"/>
+            <RadioButton Content="Settings" Height="50" Foreground="#b3e7fa" FontSize="16" Style="{StaticResource MenuButtonTheme}" Command="{Binding Path=NavigateToSettingsCommand}"/>
         </StackPanel>
         <ContentControl Grid.Row="1" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding Path=Navigation.CurrentView}"/>
     </Grid>

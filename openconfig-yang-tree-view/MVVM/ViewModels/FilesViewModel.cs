@@ -18,7 +18,7 @@ namespace openconfig_yang_tree_view.MVVM.ViewModels
             set
             {
                 _filesService = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(FilesService));
             }
         }
 

@@ -9,17 +9,18 @@ namespace openconfig_yang_tree_view.GnmiClient
 {
     public static class GnmiClientRequests
     {
-        public static string GetRequest(string ip, string port, string username, string password, string path)
+        public static string GetRequest(string ip, string port, string username, string password, bool isHttps, string path)
         {
             try
             {
+                string address = isHttps ? $"https://{ip}:{port}" : $"http://{ip}:{port}";
                 var httpClientHandler = new HttpClientHandler
                 {
                     ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
                 };
 
                 var httpClient = new HttpClient(httpClientHandler);
-                httpClient.BaseAddress = new Uri($"https://{ip}:{port}");
+                httpClient.BaseAddress = new Uri(address);
 
                 var channelOptions = new GrpcChannelOptions
                 {
@@ -28,7 +29,7 @@ namespace openconfig_yang_tree_view.GnmiClient
                 };
 
 
-                GrpcChannel channel = GrpcChannel.ForAddress($"https://{ip}:{port}", channelOptions);
+                GrpcChannel channel = GrpcChannel.ForAddress(address, channelOptions);
 
                 var _client = new gNMI.gNMIClient(channel);
 
