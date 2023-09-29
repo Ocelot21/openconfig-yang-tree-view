@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace openconfig_yang_tree_view.Services
 {
@@ -22,6 +23,8 @@ namespace openconfig_yang_tree_view.Services
             Properties.Settings.Default.IsHttps = isHttps;
             Properties.Settings.Default.SubfoldersEnabled = subfoldersEnabled;
             Properties.Settings.Default.Save();
+            MessageBox.Show("Properties saved", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+
         }
     }
 }
