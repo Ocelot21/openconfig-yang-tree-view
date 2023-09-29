@@ -49,7 +49,7 @@ Open the project in Visual Studio or your preferred WPF development environment.
 
 Build and run the application.
 
-## Usage
+### Usage
 
 ### 1. Files:
 
