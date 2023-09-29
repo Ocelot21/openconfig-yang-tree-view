@@ -63,7 +63,7 @@ namespace openconfig_yang_tree_view.GnmiClient
             
             catch (Exception ex)
             {
-                return $"Error occured. Message:\n{ex.Message}\nSource:\n{ex.Source}";
+                return $"An error occured. Message:\n{ex.Message}\nSource:\n{ex.Source}";
             }
         }
     }

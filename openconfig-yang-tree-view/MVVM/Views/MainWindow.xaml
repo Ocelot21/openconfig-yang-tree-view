@@ -19,11 +19,13 @@
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="skyline" Foreground="#b3e7fa" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" Margin="20, 0, 10, 0"/>
+        <!--<TextBlock Text="skyline" Foreground="#b3e7fa" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" Margin="20, 0, 10, 0"/>-->
+        <Image Source="/openconfig-yang-tree-view;component/Images/skyline_white.png" 
+               HorizontalAlignment="Center" VerticalAlignment="Center" Width="120"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
-            <Button x:Name="btnMinimze" Content="_" Width="50" Height="50" BorderBrush="Transparent" Background="Transparent" Foreground="#b3e7fa" Command="{Binding Path=MinimizeCommand}"/>
-            <Button x:Name="btnMaximize" Content="▭" Width="50" Height="50" BorderBrush="Transparent" Background="Transparent" Foreground="#b3e7fa" Command="{Binding Path=MaximizeCommand}"/>
-            <Button x:Name="btnClose" Content="X" Width="50" Height="50" BorderBrush="Transparent" Background="Transparent" Foreground="#b3e7fa" Command="{Binding Path=CloseCommand}"/>
+            <Button x:Name="btnMinimze" Content="_" Width="50" Height="50" Style="{StaticResource TaskbarButtonTheme}" Command="{Binding Path=MinimizeCommand}"/>
+            <Button x:Name="btnMaximize" Content="▭" Width="50" Height="50" Style="{StaticResource TaskbarButtonTheme}" Command="{Binding Path=MaximizeCommand}"/>
+            <Button x:Name="btnClose" Content="X" Width="50" Height="50" Style="{StaticResource TaskbarButtonTheme}" Command="{Binding Path=CloseCommand}"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
             <RadioButton Content="Files" Height="50" Foreground="#b3e7fa" FontSize="16" Style="{StaticResource MenuButtonTheme}" Command="{Binding Path=NavigateToFilesCommand}"></RadioButton>

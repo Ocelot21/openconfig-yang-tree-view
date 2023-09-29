@@ -10,6 +10,9 @@
     <Compile Update="MVVM\Views\ContainerPropertyGridControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="MVVM\Views\ErrorDialogWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MVVM\Views\FilesView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="MVVM\Views\ContainerPropertyGridControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="MVVM\Views\ErrorDialogWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MVVM\Views\FilesView.xaml">
@@ -88,6 +94,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\SettingTextboxTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\TaskbarButtonTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

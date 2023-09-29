@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WinForms = System.Windows.Forms;
 
 namespace openconfig_yang_tree_view.Services
@@ -102,7 +103,8 @@ namespace openconfig_yang_tree_view.Services
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"{ex.Message} \n {ex.InnerException}");
+                        MessageBox.Show("An error just occurred:\n" + ex.Message + "\n" + ex.Source, "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
                     }
                 }
                 else

@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "openconfig-yang-tree-view", "openconfig-yang-tree-view\openconfig-yang-tree-view.csproj", "{80AAFF36-7274-4092-A952-7307596D33BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "openconfig-yang-tree-view.GnmiClient", "openconfig-yang-tree-view.GnmiClient\openconfig-yang-tree-view.GnmiClient.csproj", "{4944A4CC-50C0-4D0E-BDAC-E93193ECAF05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "openconfig-yang-tree-view.GnmiClient", "openconfig-yang-tree-view.GnmiClient\openconfig-yang-tree-view.GnmiClient.csproj", "{4944A4CC-50C0-4D0E-BDAC-E93193ECAF05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

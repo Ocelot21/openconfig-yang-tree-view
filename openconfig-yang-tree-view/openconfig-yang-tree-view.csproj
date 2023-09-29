@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\skyline_white.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
     <PackageReference Include="Mapster" Version="7.4.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
@@ -17,6 +21,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\openconfig-yang-tree-view.GnmiClient\openconfig-yang-tree-view.GnmiClient.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\skyline_white.png" />
   </ItemGroup>
 
   <ItemGroup>

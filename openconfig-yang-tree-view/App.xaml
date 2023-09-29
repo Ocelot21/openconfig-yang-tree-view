@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Themes/MultilinePropertyTextboxTheme.xaml"/>
                 <ResourceDictionary Source="Themes/GetResponseTextboxTheme.xaml"/>
                 <ResourceDictionary Source="Themes/SettingTextboxTheme.xaml"/>
+                <ResourceDictionary Source="Themes/TaskbarButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <DataTemplate DataType="{x:Type TypeName=viewModel:FilesViewModel}">
@@ -27,6 +28,9 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type TypeName=viewModel:SettingsViewModel}">
                 <view:SettingsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type TypeName=viewModel:ErrorDialogViewModel}">
+                <view:ErrorDialogWindow/>
             </DataTemplate>
             <FontFamily x:Key="FontAwesome">/Fonts/fontawesome-webfont.ttf#FontAwesome
             </FontFamily>
