@@ -53,9 +53,9 @@ Build and run the application.
 
 ### 1. Files:
 
--Click on the "Files" tab.
--Choose a folder containing your YANG files.
--View the list of correctly parsed files and imports.
+- Click on the "Files" tab.
+- Choose a folder containing your YANG files.
+- View the list of correctly parsed files and imports.
 
 ### 2. TreeView:
 
@@ -66,4 +66,5 @@ Build and run the application.
 ### 3. Settings:
 
 - Click on the "Settings" tab.
-- Configure the connection settings, including IP, port, username, password, and security protocol (HTTP/HTTPS).
+- Configure the connection settings including IP, port, username, password, and security protocol (HTTP/HTTPS).
+- Check "Enable subfolders" to enable parsing .yang files from subfolders contained in choosen folder
