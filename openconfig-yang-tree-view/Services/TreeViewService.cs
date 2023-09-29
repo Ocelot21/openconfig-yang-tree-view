@@ -20,6 +20,7 @@ namespace openconfig_yang_tree_view.Services
 
         public void FillTree(TreeViewModel treeViewModel)
         {
+            _moduleService.AugmentNodes();
             foreach (var module in _dataBase.Modules.Where(m => m.RootUse != null))
             {
                 Grouping root = module.Groupings.FirstOrDefault(g => g.Name == module.RootUse.Name);
