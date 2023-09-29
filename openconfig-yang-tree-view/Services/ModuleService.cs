@@ -23,5 +23,30 @@ namespace openconfig_yang_tree_view.Services
             _dataBase.Modules.RemoveAll(m => m.IsSubmodule);
             Console.WriteLine(_dataBase.Modules.ToString());
         }
+
+        public void AugmentNodes()
+        {
+            foreach(var module in _dataBase.Modules)
+            {
+                foreach(var augment in module.Augments)
+                {
+                    string targetModulePrefix = augment.Path[0].Split(':')[0];
+
+                    Module targetModule = _dataBase.Modules.FirstOrDefault(m => m.Prefix == targetModulePrefix);
+
+                    if (targetModule != null)
+                    { 
+                        continue; 
+                    }
+
+                    if (!module.Imports.Contains(targetModule.Name))
+                    {
+                        continue;
+                    }
+
+                    //finish it
+                }
+            }
+        }
     }
 }

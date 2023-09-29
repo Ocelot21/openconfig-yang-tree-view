@@ -28,7 +28,8 @@
             <DataTemplate DataType="{x:Type TypeName=viewModel:SettingsViewModel}">
                 <view:SettingsView/>
             </DataTemplate>
-            
+            <FontFamily x:Key="FontAwesome">/Fonts/fontawesome-webfont.ttf#FontAwesome
+            </FontFamily>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

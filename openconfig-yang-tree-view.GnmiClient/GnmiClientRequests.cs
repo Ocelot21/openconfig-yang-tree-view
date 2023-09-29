@@ -14,6 +14,7 @@ namespace openconfig_yang_tree_view.GnmiClient
             try
             {
                 string address = isHttps ? $"https://{ip}:{port}" : $"http://{ip}:{port}";
+
                 var httpClientHandler = new HttpClientHandler
                 {
                     ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
@@ -52,9 +53,6 @@ namespace openconfig_yang_tree_view.GnmiClient
                 }
 
                 getRequest.Path.Add(gnmiPath);
-
-                //var capabilitiesResponse = _client.Capabilities(request, metaData);
-
 
                 var getResponse = _client.Get(getRequest, metaData);
 

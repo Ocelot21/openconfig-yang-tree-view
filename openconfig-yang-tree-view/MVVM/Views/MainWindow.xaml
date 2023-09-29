@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:openconfig_yang_tree_view.MVVM.Views" Background="#002032"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Title="MainWindow" Height="600" Width="1000">
     <WindowChrome.WindowChrome>

@@ -74,6 +74,10 @@ namespace openconfig_yang_tree_view.Services
         public void ParseFromFolder(string path)
         { 
             _files = Directory.GetFiles(path).ToList();
+            foreach (var subDirectory in Directory.GetDirectories(path))
+            {
+                _files.AddRange(Directory.GetFiles(subDirectory).ToList());
+            }
             foreach (string file in _files)
             {
                 if (file.EndsWith(".yang"))
@@ -82,10 +86,8 @@ namespace openconfig_yang_tree_view.Services
                     {
                         List<string> yangFileLines = File.ReadAllLines(file).ToList();
                         string fileName = System.IO.Path.GetFileNameWithoutExtension(file);
-                        //Console.WriteLine($"Parsing {fileName}.yang");
                         yangFileLines = yangFileLines.TrimAllLines().ToList();
                         ParseFile(yangFileLines);
-                        //Console.WriteLine($"End of {fileName}.yang\n");
                         _parsedFiles.Add(fileName);
                         Console.WriteLine(DataAccessService.YangDatabase.Modules.Count);
                     }
@@ -98,6 +100,7 @@ namespace openconfig_yang_tree_view.Services
                     continue;
             }
 
+            //_moduleService.AugmentNodes();
             var submodules = DataAccessService.YangDatabase.Modules.Where(m => m.IsSubmodule);
 
             _moduleService.MergeModulesWithSubmodules();
@@ -211,7 +214,8 @@ namespace openconfig_yang_tree_view.Services
                         break;
                     case string line when line.StartsWith("augment"):
                         Augment augment = new Augment();
-                        augment.Name = line.Split(' ')[1];
+                        augment.Name = line.Split(' ')[1].Trim('"');
+                        augment.Path = augment.Name.Split('/', StringSplitOptions.RemoveEmptyEntries).ToList();
                         List<string> augmentLines = moduleLines.GetObjectContent(i, out int augmentIndex).ToList();
                         ParseAugment(augmentLines, augment, module.Prefix);
                         module.Augments.Add(augment);
@@ -469,7 +473,6 @@ namespace openconfig_yang_tree_view.Services
 
         private void ParseLeaf(List<string> leafLines, Leaf leaf)
         {
-            leaf.Config = true; //Default for leaf
             for (int i = 0; i < leafLines.Count; i++)
             {
                 switch (leafLines[i])

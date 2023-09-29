@@ -122,9 +122,13 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "dependencies": {
+            "FontAwesome.WPF": {
+              "target": "Package",
+              "version": "[4.7.0.9, )"
+            },
             "Mapster": {
               "target": "Package",
-              "version": "[7.3.0, )"
+              "version": "[7.4.0, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",

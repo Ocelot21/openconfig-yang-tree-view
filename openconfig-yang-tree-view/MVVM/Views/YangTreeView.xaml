@@ -5,9 +5,35 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:openconfig_yang_tree_view.MVVM.Views"
       xmlns:viewmodels="clr-namespace:openconfig_yang_tree_view.MVVM.ViewModels"
+      xmlns:selector="clr-namespace:openconfig_yang_tree_view.TemplateSelectors"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
       mc:Ignorable="d">
     <UserControl.Resources>
-        
+        <HierarchicalDataTemplate DataType="{x:Type viewmodels:ContainerViewModel}" ItemsSource="{Binding Children}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Archive" Width="16" Height="16" Foreground="#b3e7fa"/>
+                <TextBlock Text="{Binding Name}" Margin="5,0" Foreground="#b3e7fa"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType="{x:Type viewmodels:LeafViewModel}" ItemsSource="{Binding Children}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Leaf" Width="16" Height="16" Foreground="#b3e7fa"/>
+                <TextBlock Text="{Binding Name}" Margin="5,0" Foreground="#b3e7fa"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType="{x:Type viewmodels:ListViewModel}" ItemsSource="{Binding Children}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="List" Width="16" Height="16" Foreground="#b3e7fa"/>
+                <TextBlock Text="{Binding Name}" Margin="5,0" Foreground="#b3e7fa"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType="{x:Type viewmodels:GroupingViewModel}" ItemsSource="{Binding Children}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Icon="Group" Width="16" Height="16" Foreground="#b3e7fa"/>
+                <TextBlock Text="{Binding Name}" Margin="5,0" Foreground="#b3e7fa"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+        <selector:NodeTemplateSelector x:Key="NodeTemplateSelector"/>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -15,12 +41,7 @@
             <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
 
-        <TreeView Grid.Column="0" ItemsSource="{Binding Roots}" Name="treeView" SelectedItemChanged="treeView_SelectedItemChanged" Background="Transparent" FontSize="16" BorderThickness="0.5" BorderBrush="#80d7f7" Margin="20,10,10,10">
-            <TreeView.Resources>
-                <HierarchicalDataTemplate DataType="{x:Type viewmodels:TreeNodeViewModel}" ItemsSource="{Binding Children}">
-                    <TextBlock Text="{Binding Name}" Foreground="#b3e7fa" />
-                </HierarchicalDataTemplate>
-            </TreeView.Resources>
+        <TreeView Grid.Column="0" ItemTemplateSelector="{StaticResource NodeTemplateSelector}" ItemsSource="{Binding Roots}" Name="treeView" SelectedItemChanged="treeView_SelectedItemChanged" Background="Transparent" FontSize="16" BorderThickness="0.5" BorderBrush="#80d7f7" Margin="20,10,10,10">
         </TreeView>
 
         <StackPanel x:Name="propertyGridPlaceholder" Grid.Column="1" Margin="30, 10, 10, 10"/>

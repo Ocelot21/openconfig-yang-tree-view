@@ -6,5 +6,9 @@
         public string Description { get; set; }
         public bool Config { get; set; }
         public string Type { get; set; }
+        public Leaf()
+        {
+            Config = true;
+        }
     }
 }
