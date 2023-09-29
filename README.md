@@ -44,7 +44,7 @@ Configuring the GNMI connection is crucial for seamless interaction with network
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/Openconfig-Yang-Browser.git
+   git clone https://github.com/Ocelot21/opencofig-yang-tree-view.git
 Open the project in Visual Studio or your preferred WPF development environment.
 
 Build and run the application.
