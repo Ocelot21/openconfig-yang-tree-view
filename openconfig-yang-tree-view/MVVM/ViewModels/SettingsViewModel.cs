@@ -67,6 +67,20 @@ namespace openconfig_yang_tree_view.MVVM.ViewModels
             }
         }
 
+        private bool _subfoldersEnabled;
+        public bool SubfoldersEnabled
+        {
+            get => _subfoldersEnabled;
+            set
+            {
+                if (_subfoldersEnabled != value)
+                {
+                    _subfoldersEnabled = value;
+                    OnPropertyChanged(nameof(SubfoldersEnabled));
+                }
+            }
+        }
+
         private ISettingsService _settingsService;
         public ISettingsService SettingsService
         {
@@ -83,17 +97,18 @@ namespace openconfig_yang_tree_view.MVVM.ViewModels
         public SettingsViewModel(ISettingsService settingsService)
         {
             SettingsService = settingsService;
-            Ip = string.Empty;
-            Port = string.Empty;
-            Username = string.Empty;
-            Password = string.Empty;
-            IsHttps = false;
+            Ip = Properties.Settings.Default.Ip;
+            Port = Properties.Settings.Default.Port;
+            Username = Properties.Settings.Default.Username;
+            Password = Properties.Settings.Default.Password;
+            IsHttps = Properties.Settings.Default.IsHttps;
+            SubfoldersEnabled = Properties.Settings.Default.SubfoldersEnabled;
             SaveCommand = new RelayCommand(Save, obj => true);
         }
 
         private void Save(object obj)
         {
-            SettingsService.Save(Ip, Port, Username, Password, IsHttps);
+            SettingsService.Save(Ip, Port, Username, Password, IsHttps, SubfoldersEnabled);
         }
     }
 }

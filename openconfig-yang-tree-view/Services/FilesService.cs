@@ -72,12 +72,21 @@ namespace openconfig_yang_tree_view.Services
         }
 
         public void ParseFromFolder(string path)
-        { 
+        {
+            _files.Clear();
+            _dataBase.Modules.Clear();
+            _parsedFiles.Clear();
+            _missingFiles.Clear();
             _files = Directory.GetFiles(path).ToList();
-            foreach (var subDirectory in Directory.GetDirectories(path))
+
+            if (Properties.Settings.Default.SubfoldersEnabled)
             {
-                _files.AddRange(Directory.GetFiles(subDirectory).ToList());
+                foreach (var subDirectory in Directory.GetDirectories(path))
+                {
+                    _files.AddRange(Directory.GetFiles(subDirectory).ToList());
+                }
             }
+            
             foreach (string file in _files)
             {
                 if (file.EndsWith(".yang"))

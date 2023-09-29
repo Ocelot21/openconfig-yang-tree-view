@@ -82,5 +82,17 @@ namespace openconfig_yang_tree_view.Properties {
                 this["IsHttps"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SubfoldersEnabled {
+            get {
+                return ((bool)(this["SubfoldersEnabled"]));
+            }
+            set {
+                this["SubfoldersEnabled"] = value;
+            }
+        }
     }
 }
