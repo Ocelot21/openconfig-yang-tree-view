@@ -8,5 +8,6 @@
         Title="GnmiGetWindow" Height="450" Width="800">
     <Grid>
         <TextBox Name="txtResponse" Style="{StaticResource GetResponseTextboxTheme}" Width="600" Height="380" HorizontalAlignment="Left" Margin="20, 0, 0, 0"/>
+        <Button Content="Copy" Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,27,114,0" Height="auto" Style="{StaticResource SelectButtonTheme}" />
     </Grid>
 </Window>

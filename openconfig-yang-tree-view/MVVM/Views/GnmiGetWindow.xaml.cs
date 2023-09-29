@@ -44,5 +44,19 @@ namespace openconfig_yang_tree_view.MVVM.Views
                 list.Path);
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtResponse.Text))
+            {
+                // Copy the text to the clipboard
+                Clipboard.SetText(txtResponse.Text);
+                MessageBox.Show("Text copied to clipboard.", "Copy Successful", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("No text to copy.", "Copy Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
     }
 }
