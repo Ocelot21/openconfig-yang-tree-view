@@ -11,25 +11,25 @@
     <UserControl.Resources>
         <HierarchicalDataTemplate DataType="{x:Type viewmodels:ContainerViewModel}" ItemsSource="{Binding Children}">
             <StackPanel Orientation="Horizontal">
-                <fa:ImageAwesome Icon="Archive" Width="16" Height="16" Foreground="#b3e7fa"/>
+                <fa:ImageAwesome Icon="Archive" Width="16" Height="16" Foreground="#00aeef"/>
                 <TextBlock Text="{Binding Name}" Margin="5,0" Foreground="#b3e7fa"/>
             </StackPanel>
         </HierarchicalDataTemplate>
         <HierarchicalDataTemplate DataType="{x:Type viewmodels:LeafViewModel}" ItemsSource="{Binding Children}">
             <StackPanel Orientation="Horizontal">
-                <fa:ImageAwesome Icon="Leaf" Width="16" Height="16" Foreground="#b3e7fa"/>
+                <fa:ImageAwesome Icon="Leaf" Width="16" Height="16" Foreground="#00aeef"/>
                 <TextBlock Text="{Binding Name}" Margin="5,0" Foreground="#b3e7fa"/>
             </StackPanel>
         </HierarchicalDataTemplate>
         <HierarchicalDataTemplate DataType="{x:Type viewmodels:ListViewModel}" ItemsSource="{Binding Children}">
             <StackPanel Orientation="Horizontal">
-                <fa:ImageAwesome Icon="List" Width="16" Height="16" Foreground="#b3e7fa"/>
+                <fa:ImageAwesome Icon="List" Width="16" Height="16" Foreground="#00aeef"/>
                 <TextBlock Text="{Binding Name}" Margin="5,0" Foreground="#b3e7fa"/>
             </StackPanel>
         </HierarchicalDataTemplate>
         <HierarchicalDataTemplate DataType="{x:Type viewmodels:GroupingViewModel}" ItemsSource="{Binding Children}">
             <StackPanel Orientation="Horizontal">
-                <fa:ImageAwesome Icon="Group" Width="16" Height="16" Foreground="#b3e7fa"/>
+                <fa:ImageAwesome Icon="Group" Width="16" Height="16" Foreground="#00aeef"/>
                 <TextBlock Text="{Binding Name}" Margin="5,0" Foreground="#b3e7fa"/>
             </StackPanel>
         </HierarchicalDataTemplate>

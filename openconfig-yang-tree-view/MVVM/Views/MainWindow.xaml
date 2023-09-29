@@ -26,7 +26,7 @@
             <Button x:Name="btnClose" Content="X" Width="50" Height="50" BorderBrush="Transparent" Background="Transparent" Foreground="#b3e7fa" Command="{Binding Path=CloseCommand}"/>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <RadioButton Content="Files" Height="50" Foreground="#b3e7fa" FontSize="16" Style="{StaticResource MenuButtonTheme}" Command="{Binding Path=NavigateToFilesCommand}"/>
+            <RadioButton Content="Files" Height="50" Foreground="#b3e7fa" FontSize="16" Style="{StaticResource MenuButtonTheme}" Command="{Binding Path=NavigateToFilesCommand}"></RadioButton>
             <RadioButton Content="Tree View" Height="50" Foreground="#b3e7fa" FontSize="16" Style="{StaticResource MenuButtonTheme}" Command="{Binding Path=NavigateToYangTreeViewCommand}"/>
             <RadioButton Content="Settings" Height="50" Foreground="#b3e7fa" FontSize="16" Style="{StaticResource MenuButtonTheme}" Command="{Binding Path=NavigateToSettingsCommand}"/>
         </StackPanel>
